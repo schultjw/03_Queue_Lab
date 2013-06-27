@@ -14,7 +14,7 @@ class ArrayQueue : public Queue <T> {
   // The array should never grow unless numItems == backingArraySize
   void add(T toAdd);
   T remove();
-  unsigned int getNumItems();
+  unsigned long getNumItems();
 
   //Initialize all private member variables.
   // You initial backing array should be length 10. Allocate it
@@ -35,12 +35,12 @@ class ArrayQueue : public Queue <T> {
   T* backingArray;
   
   //The index in T where the front of the queue is.
-  unsigned int front;
+  unsigned long front;
   //Number of items in the queue
-  unsigned int numItems;
+  unsigned long numItems;
 
   //Number of spaces in the array pointed to by backingArray
-  unsigned int backingArraySize;
+  unsigned long backingArraySize;
 };
 
 #include "ArrayQueue.ipp"

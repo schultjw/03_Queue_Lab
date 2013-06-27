@@ -21,6 +21,8 @@ class Queue {
  public:
 
   //Add the input item to the back of the queue
+  //If it is impossible to do so (perhaps your are out of memory)
+  // then throw a string exception.
   //Syntax note: C++ does not have the "abstract" keyword,
   // so to get an abstract function we have to do 2 things:
   // 1) Declare it to be virtual
@@ -32,5 +34,5 @@ class Queue {
   virtual T remove() = 0;
 
   //Return the number of items currently in the queue
-  virtual unsigned int getNumItems() = 0;
+  virtual unsigned long getNumItems() = 0;
 };

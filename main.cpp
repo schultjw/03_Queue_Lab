@@ -70,7 +70,7 @@ void testGrow(ArrayQueue<int>& testQueue){
 
 //Test to make sure you are throwing an exception if remove is
 // called improperly
-void testException(ArrayQueue<int>& testQueue){
+void testRemoveException(ArrayQueue<int>& testQueue){
   try {
     int t = testQueue.remove();
   } catch (std::string s) {
@@ -91,7 +91,7 @@ int main(){
   testAddRemove(testQueue);
   testAroundTheHorn(testQueue);
   testGrow(testQueue);
-  testException(testQueue);
+  testRemoveException(testQueue);
 
   return 0;
 }

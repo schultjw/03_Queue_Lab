@@ -1,3 +1,6 @@
+Author
+==========
+Andy Shear, shearar
 03_Queue_Lab
 ============
 

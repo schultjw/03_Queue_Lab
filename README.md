@@ -15,6 +15,10 @@ Requirements
 7. add and remove throw excpetions as appropriate
 8. You must use the array in a circular fashion. If you don't do this you probably won't be able to get #1, #2 and #3 to all be true.
 
+Reading
+=======
+"Open Data Structures," Chapter 2, up through section 2.4 (ArrayDequeue). http://opendatastructures.org/ods-cpp/2_Array_Based_Lists.html
+
 Questions
 =========
 

@@ -30,7 +30,12 @@ ArrayQueue<T>::~ArrayQueue() {
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
 	if(numItems == backingArraySize)
-		grow();
+		try{
+			grow();
+	}
+	catch(std::bad_alloc){
+		std::cout << "ERROR: bad_alloc, out of memory!" << std::endl;
+	}
 	backingArray[(front+numItems)%backingArraySize] = toAdd;
 	numItems++;
 }
@@ -38,9 +43,10 @@ void ArrayQueue<T>::add(T toAdd){
 template <class T>
 T ArrayQueue<T>::remove(){
   if(numItems == 0)
-	  throw new std::string("Error in remove");
+	  throw std::string("Error in remove, no items in Queue to remove");
   T tmp = backingArray[front];
-  front++;
+  front = (front+1)%backingArraySize;
+  numItems--;
   return tmp;
 }
 
@@ -53,8 +59,9 @@ template <class T>
 void ArrayQueue<T>::grow(){
 	T* tmp = new T[backingArraySize*2];
 	for(int i = 0; i<backingArraySize; i++){
-		tmp[i] = backingArray[i];
+		tmp[front+i] = backingArray[(front+i)%backingArraySize];
 	}
+	backingArraySize = backingArraySize*2;
 	delete [] backingArray;
 	backingArray = tmp;
 }

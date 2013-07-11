@@ -1,6 +1,6 @@
 ﻿  main.cpp
-c:\users\andy\documents\cse_274\03_queue_lab\ArrayQueue.ipp(55): warning C4018: '<' : signed/unsigned mismatch
-          c:\users\andy\documents\cse_274\03_queue_lab\ArrayQueue.ipp(53) : while compiling class template member function 'void ArrayQueue<T>::grow(void)'
+c:\users\andy\documents\cse_274\03_queue_lab\ArrayQueue.ipp(61): warning C4018: '<' : signed/unsigned mismatch
+          c:\users\andy\documents\cse_274\03_queue_lab\ArrayQueue.ipp(59) : while compiling class template member function 'void ArrayQueue<T>::grow(void)'
           with
           [
               T=int

@@ -43,4 +43,14 @@ class ArrayQueue : public Queue <T> {
   unsigned long backingArraySize;
 };
 
+/***
+ *
+ * Normally when we write C++, we put declarations in the .h file,
+ * and code in a matching .cpp file. Unfortunately, when working with
+ * templates, this doesn't work very well. If you tried to compile
+ * ArrayQueue.ipp, it wouldn't know what type "T" is, and so couldn't
+ * succeed. So when we use template classes, we have to include the
+ * source code for the whole class.
+ *
+ **/
 #include "ArrayQueue.ipp"

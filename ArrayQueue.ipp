@@ -29,13 +29,17 @@ ArrayQueue<T>::~ArrayQueue() {
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
-	if(numItems == backingArraySize)
-		try{
+  if(numItems == backingArraySize){
+		//try{
 			grow();
 	}
-	catch(std::bad_alloc){
+	//You need to *throw* an exception here, not *catch* one.
+	// Something like: throw (std::string)"ERROR: bad_alloc, out of memory!";
+	// See: www.cplusplus.com/doc/tutorial/exceptions
+  //You did this right in remove...
+	/*catch(std::bad_alloc){
 		std::cout << "ERROR: bad_alloc, out of memory!" << std::endl;
-	}
+	}*/
 	backingArray[(front+numItems)%backingArraySize] = toAdd;
 	numItems++;
 }

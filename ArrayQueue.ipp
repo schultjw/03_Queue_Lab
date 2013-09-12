@@ -14,31 +14,54 @@
 // tell the compiler that this ArrayQueue() method belongs to the
 // ArrayQueue<T> class.
 template <class T>
-ArrayQueue<T>::ArrayQueue(){
+ArrayQueue<T>::ArrayQueue()
+{
+	backingArray = new T[START_SIZE];
+	front = 0;
+	numItems = 0;
+	backingArraySize = START_SIZE;
+}
+
+template <class T>
+ArrayQueue<T>::~ArrayQueue()
+{
+	delete[] backingArray;
 
 }
 
 template <class T>
-ArrayQueue<T>::~ArrayQueue() {
-
+void ArrayQueue<T>::add(T toAdd)
+{
+	if (numItems == backingArraySize)
+		grow();
+	backingArray[(front+numItems)%backingArraySize] = toAdd;
+	numItems += 1;
 }
 
 template <class T>
-void ArrayQueue<T>::add(T toAdd){
-
+T ArrayQueue<T>::remove()
+{
+  T temp = backingArray[front];
+  front = (front + 1) % backingArraySize;
+  numItems -= 1;
+  return temp;
 }
 
 template <class T>
-T ArrayQueue<T>::remove(){
-  
+unsigned long ArrayQueue<T>::getNumItems()
+{
+	return numItems;
 }
 
 template <class T>
-unsigned long ArrayQueue<T>::getNumItems(){
-
-}
-
-template <class T>
-void ArrayQueue<T>::grow(){
-
+void ArrayQueue<T>::grow()
+{
+	T* temp = new T[backingArraySize*2];
+	/*for(int i = front; i < (front + numItems)%backingArraySize; i++)
+	{
+		temp[i] = backingArray[i];
+	}*/
+	backingArray = temp;
+	delete[] temp;
+	backingArraySize *= 2;
 }

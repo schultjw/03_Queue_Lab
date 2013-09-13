@@ -1,3 +1,6 @@
+Author
+==========
+"Zirkle, Andrew", zirkleac
 03_Queue_Lab
 ============
 

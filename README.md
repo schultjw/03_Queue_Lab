@@ -1,3 +1,6 @@
+Author
+==========
+"Emrick, Garrett", emrickgj
 03_Queue_Lab
 ============
 

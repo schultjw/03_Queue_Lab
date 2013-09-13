@@ -1,3 +1,6 @@
+Author
+==========
+"Decker, Benjamin", deckerbd
 03_Queue_Lab
 ============
 

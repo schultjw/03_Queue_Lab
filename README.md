@@ -1,3 +1,6 @@
+Author
+==========
+"Kosir, Jonathan", kosirjm
 03_Queue_Lab
 ============
 

@@ -1,3 +1,6 @@
+Author
+==========
+"Monnin, Sebastian", monninse
 03_Queue_Lab
 ============
 

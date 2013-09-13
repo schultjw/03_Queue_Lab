@@ -3,8 +3,6 @@
 
 Implement an array-based queue in C++
 
-Note: When you create your project, do NOT add ArrayQueue.ipp to the list of source files, add it to the list of include files. You will see that ArrayQueue.ipp is #included at the bottom of ArrayQueue.h. See ArrayQueue.h for more explanation.
-
 Requirements
 ------------
 

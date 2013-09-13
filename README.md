@@ -1,3 +1,6 @@
+Author
+==========
+"Gardner, Daniel", gardnedn
 03_Queue_Lab
 ============
 

@@ -1,3 +1,6 @@
+Author
+==========
+"Bailey, Sam", baileys2
 03_Queue_Lab
 ============
 

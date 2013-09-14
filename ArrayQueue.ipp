@@ -14,23 +14,48 @@
 // tell the compiler that this ArrayQueue() method belongs to the
 // ArrayQueue<T> class.
 template <class T>
-ArrayQueue<T>::ArrayQueue(){
 
+// constructor
+ArrayQueue<T>::ArrayQueue()
+	front = 0;
+	numItems =0;
+	backingArraySize = START_SIZE;
+
+	// new operator allowcate memory for array of type T (T will be decide at run time)
+	backingArray = new T[backingArraySize];
 }
 
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
 
+	//the use of [] when destroying an array allocated with new
+	delete[] backingArray;
 }
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
 
+	// if numItems == backingArraySize, grow the array
+	try{
+		if(numItems == backingArraySize){
+			grow();
+		}
+		backingArray[(front+1)%backingArraySize] = toAdd;
+		numItems++;
+
+	}
+	catch(std::bac_alloc& ba){
+		std::cerr << "bad_alloc caught: " << ba.what()<<endl;
+	}
+
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
-  
+	if(backingArraySize==0){
+		throw "The Queue is empty"
+	}
+	backingA
 }
 
 template <class T>

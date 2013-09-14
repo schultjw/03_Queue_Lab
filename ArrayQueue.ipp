@@ -16,13 +16,15 @@
 template <class T>
 
 // constructor
-ArrayQueue<T>::ArrayQueue()
+ArrayQueue<T>::ArrayQueue(){
+	
 	front = 0;
 	numItems =0;
 	backingArraySize = START_SIZE;
 
 	// new operator allowcate memory for array of type T (T will be decide at run time)
 	backingArray = new T[backingArraySize];
+	
 }
 
 template <class T>
@@ -44,8 +46,8 @@ void ArrayQueue<T>::add(T toAdd){
 		numItems++;
 
 	}
-	catch(std::bac_alloc& ba){
-		std::cerr << "bad_alloc caught: " << ba.what()<<endl;
+	catch(std::exception&){
+		std::cout<< "You are out of memory";
 	}
 
 }
@@ -53,33 +55,29 @@ void ArrayQueue<T>::add(T toAdd){
 template <class T>
 T ArrayQueue<T>::remove(){
 	if(backingArraySize==0){
-		throw "The Queue is empty"
+		throw "The Queue is empty";
 	}
-
+	
 	// advance the front index
 	T updatedQueue = backingArray[(front+1)%backingArraySize];
 	numItems--;
 	return updatedQueue;
+	 
 }
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
+
 	return numItems;
 }
 
 template <class T>
 void ArrayQueue<T>::grow(){
-	
-	// create a new array with twice the size of the original
-	T* newBackingArray = new T[backingArrraySize * 2];
-	
-	// copy each of elements in the old one to the new one
-	for(int i =0; i<backingArraySize; i++){
-			newBackingArray[i] = backingArray[i]
+	T* newBackingArray = new T[backingArraySize * 2];
+	for(unsigned int i =0; i<backingArraySize; i++){
+		newBackingArray[i] = backingArray[i];
 	}
 
-	// delete the original array
 	delete[] backingArray;
-
 	backingArray = newBackingArray;
 }

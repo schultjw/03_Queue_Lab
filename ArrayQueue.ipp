@@ -64,10 +64,22 @@ T ArrayQueue<T>::remove(){
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
-
+	return numItems;
 }
 
 template <class T>
 void ArrayQueue<T>::grow(){
+	
+	// create a new array with twice the size of the original
+	T* newBackingArray = new T[backingArrraySize * 2];
+	
+	// copy each of elements in the old one to the new one
+	for(int i =0; i<backingArraySize; i++){
+			newBackingArray[i] = backingArray[i]
+	}
 
+	// delete the original array
+	delete[] backingArray;
+
+	backingArray = newBackingArray;
 }

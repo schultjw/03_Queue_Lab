@@ -1,6 +1,6 @@
 //You will need this so you can make a string to throw in
 // remove
-#include <string>
+#include <String>
 
 //Syntax note: This uses the pre-processor to create a constant
 // You could also use "const static" to make a constant, as in Java.

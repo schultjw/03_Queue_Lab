@@ -14,7 +14,7 @@ Requirements
 4. grow takes O(n) time
 5. Do not leak memory (make sure grow and the destructor do the right thing)
 6. getNumItems is O(1) time
-7. add and remove throw excpetions as appropriate
+7. add and remove throw exceptions as appropriate
 8. You must use the array in a circular fashion. If you don't do this you probably won't be able to get #1, #2 and #3 to all be true.
 
 Reading
@@ -36,9 +36,9 @@ Questions
 8. TODO
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
-
-#### 3. What is one question that confused you about this excercise, or one piece of advice you would share with students next semester?
-
+add remove and resize would all need to be kept but the grow, front and numitems would not be needed.
+#### 3. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
+I'm not even sure what to start with. There's no rules on getting started like "make a new file"
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
 
 #### 5. What is the purpose of "templates" in C++?

@@ -44,5 +44,6 @@ class ArrayQueue : public Queue <T>
 #### 5. What is the purpose of "templates" in C++?
 It seems to be a method that doesn't have a set type of variable. it can take strings or ints
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?
-
+int *array= new int[10];
 #### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?
+A class destructor basicly gives you the memory back an object was using. Java automaticly sees if you use a variable again and cleans the memory if you don't.

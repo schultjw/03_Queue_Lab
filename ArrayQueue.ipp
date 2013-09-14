@@ -38,31 +38,32 @@ template <class T>
 void ArrayQueue<T>::add(T toAdd){
 
 	// if numItems == backingArraySize, grow the array
-	try{
 		if(numItems == backingArraySize){
-			grow();
+			try {
+				grow();
+			}
+			catch(std::exception&){
+				std::cout<< "You are out of memory\n";
+			}
 		}
-		backingArray[(front+1)%backingArraySize] = toAdd;
+		backingArray[(front+numItems)%backingArraySize] = toAdd;
 		numItems++;
-
-	}
-	catch(std::exception&){
-		std::cout<< "You are out of memory";
-	}
-
 }
+
+
 
 template <class T>
 T ArrayQueue<T>::remove(){
-	if(backingArraySize==0){
-		throw "The Queue is empty";
-	}
+
+	if(numItems==0)
+		throw std::exception("The Queue is empty");
+	
 	
 	// advance the front index
-	T updatedQueue = backingArray[(front+1)%backingArraySize];
+	T removedItem = backingArray[front];
+	front = (front + 1) % backingArraySize;
 	numItems--;
-	return updatedQueue;
-	 
+	return removedItem;
 }
 
 template <class T>

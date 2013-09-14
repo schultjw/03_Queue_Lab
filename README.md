@@ -40,9 +40,9 @@ add remove and resize would all need to be kept but the grow, front and numitems
 #### 3. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
 I'm not even sure what to start with. There's no rules on getting started like "make a new file"
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
-
+class ArrayQueue : public Queue <T>
 #### 5. What is the purpose of "templates" in C++?
-
+It seems to be a method that doesn't have a set type of variable. it can take strings or ints
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?
 
 #### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?

@@ -55,7 +55,11 @@ T ArrayQueue<T>::remove(){
 	if(backingArraySize==0){
 		throw "The Queue is empty"
 	}
-	backingA
+
+	// advance the front index
+	T updatedQueue = backingArray[(front+1)%backingArraySize];
+	numItems--;
+	return updatedQueue;
 }
 
 template <class T>

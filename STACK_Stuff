@@ -1,6 +1,5 @@
 
 
-//I try to wirte down these code by using editor, so I am not sure if it is compiler...
 class stack
 {
       int stk[500]; top;

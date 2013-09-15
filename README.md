@@ -37,6 +37,59 @@ Questions
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 
+The methods to keep:
+
+get()
+
+set()
+
+add()
+
+resize()
+
+remove()
+
+
+The variables to keep:
+
+The number of element.
+
+
+The variable to get rid of:
+
+The integer to store the first index of element in the queue.
+
+
+Why keep them?
+
+The get(), set(), and add() methods are definitely necessary, performing to
+
+get elements, set elements, and add elements from stack and queue. Resize()
+
+method is to increase the size of stack and queue when they are full. Remove()
+
+method is to delete elements from stack and queue.
+
+
+Why kick them?
+
+Because stack is last in first out policy, so keep the index of first element
+
+in the stack is useless. But you might ask why don't we just keep it and do a
+
+circular-stack like we use this variable to do a circular-queue? The answer is 
+
+because stack is LIFO policy like I said before, you can image that you are
+
+stacking plates, there is no way to go back to previous index.
+
+
+
+
+
+
+
+
 #### 3. What is one question that confused you about this excercise, or one piece of advice you would share with students next semester?
 
 

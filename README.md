@@ -44,5 +44,12 @@ Questions
 #### 5. What is the purpose of "templates" in C++?
 
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?
+ 
+ int *array = new int[10];
+ 
+ delete [] array;
+
+ array = NULL;
+
 
 #### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?

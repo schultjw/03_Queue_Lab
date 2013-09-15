@@ -49,6 +49,8 @@ resize()
 
 remove()
 
+//*************************************************************
+
 
 The variables to keep:
 
@@ -60,6 +62,9 @@ The variable to get rid of:
 The integer to store the first index of element in the queue.
 
 
+//*************************************************************
+
+
 Why keep them?
 
 The get(), set(), and add() methods are definitely necessary, performing to
@@ -69,6 +74,9 @@ get elements, set elements, and add elements from stack and queue. Resize()
 method is to increase the size of stack and queue when they are full. Remove()
 
 method is to delete elements from stack and queue.
+
+
+//***********************************************************
 
 
 Why kick them?
@@ -116,8 +124,12 @@ class ArrayQueue :: public Queue {};
 
  int *array = new int[10];
  
+ //Free the memory
+
  delete [] array;
 
+ //Even though you free the memory, but it is still pointing somewhere, isn't it
+ ?
  array = NULL;
 
 

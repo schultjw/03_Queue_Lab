@@ -39,6 +39,11 @@ Questions
 
 #### 3. What is one question that confused you about this excercise, or one piece of advice you would share with students next semester?
 
+
+Implementing Queue by using circular-array based is very useful.
+
+
+
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
 
 class ArrayQueue :: public Queue {};

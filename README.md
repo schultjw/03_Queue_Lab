@@ -55,3 +55,17 @@ Questions
 
 
 #### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?
+
+Java uses managed memory, programmers can allocate memory by using new operator,
+and deallocate memory by relying on the garbage collector. Java takes care of
+memory management for programmers. However, C++ doesn't handle its own memory, 
+every time the programmers use delete() method the destructor of given 
+arguement will be called, and return memory allocated by new back to heap in
+order to avoid memory leak.
+
+
+
+
+
+
+

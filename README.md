@@ -43,6 +43,12 @@ Questions
 
 #### 5. What is the purpose of "templates" in C++?
 
+1. To avoid repeating code which is identical except for different types.
+
+2. To generate code in compile time.
+
+
+
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?
  
  //Allocate the memory.

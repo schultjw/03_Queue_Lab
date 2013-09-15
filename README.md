@@ -130,6 +130,7 @@ class ArrayQueue :: public Queue {};
 
  //Even though you free the memory, but it is still pointing somewhere, isn't it
  ?
+
  array = NULL;
 
 

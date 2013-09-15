@@ -1,7 +1,7 @@
 //You will need this so you can make a string to throw in
 // remove
 #include <string>
-
+#include <cmath>
 //Syntax note: This uses the pre-processor to create a constant
 // You could also use "const static" to make a constant, as in Java.
 // Notice, however, that START_SIZE is NOT a variable! Instead, any
@@ -17,9 +17,8 @@ template <class T>
 ArrayQueue<T>::ArrayQueue(){
     backingArray = new T [START_SIZE];
     front = 0;
-    private int end = 0;
     backingArraySize = START_SIZE;
-    
+    numItems = 0;
 }
 
 template <class T>
@@ -31,32 +30,47 @@ ArrayQueue<T>::~ArrayQueue() {
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
-    if(end>backingArraySize)
-    this.grow();
-    backingArray[end] = toAdd;
-    end ++;
+    if(numItems+1>backingArraySize)
+    grow();
+    backingArray[(front+numItems)%backingArraySize] = toAdd;
+    numItems++;
 
 }
 
 template <class T>
   T ArrayQueue<T>::remove(){
-  T thingToRemove = backingArray[start];
+  //if(numItems==0)
+
+  T thingToRemove = backingArray[front];
   front ++;
   if (front>=backingArraySize)
   front = 0;
-  
+  numItems -=1;
   return thingToRemove;
 }
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
-    return ((backingArraySize+end)-front)%backingArraySize;
-
+    return numItems;
 }
 
 template <class T>
 void ArrayQueue<T>::grow(){
-   ArrayQueue original = this;
-   ArrayQueue created = new ArrayQueue();
+   T* largerArray = new T[backingArraySize*2];
+   int itemsCopied = 0;
+   int index = 0;
+   while (itemsCopied<numItems){
+      largerArray[index] = backingArray[front];
+      front++;
+      itemsCopied++;
+      if (front==backingArraySize)
+        front = 0;
+
+   }
+   
+   front = 0;
+   backingArraySize *=2;
+   delete[] backingArray;
+   backingArray = largerArray;
 
 }

@@ -41,6 +41,9 @@ Questions
 
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
 
+class ArrayQueue :: public Queue {};
+
+
 #### 5. What is the purpose of "templates" in C++?
 
 1. To avoid repeating code which is identical except for different types.

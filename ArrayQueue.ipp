@@ -15,33 +15,34 @@
 // ArrayQueue<T> class.
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
-    return new ArrayQueue(START_SIZE);
+    backingArray = new T [START_SIZE];
     front = 0;
-    int end = 0;
-    int size = START_SIZE;
-
+    private int end = 0;
+    backingArraySize = START_SIZE;
+    
 }
 
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
-   this.delete[];
+   delete[] backingArray;
+   delete this;
 
 }
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
-    if(end>size)
+    if(end>backingArraySize)
     this.grow();
-    this[end] = toAdd;
+    backingArray[end] = toAdd;
     end ++;
 
 }
 
 template <class T>
   T ArrayQueue<T>::remove(){
-  T thingToRemove = this[start];
+  T thingToRemove = backingArray[start];
   front ++;
-  if (front>=size)
+  if (front>=backingArraySize)
   front = 0;
   
   return thingToRemove;
@@ -49,7 +50,7 @@ template <class T>
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
-    return ((size+end)-front)%size;
+    return ((backingArraySize+end)-front)%backingArraySize;
 
 }
 

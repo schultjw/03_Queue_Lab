@@ -37,8 +37,10 @@ void ArrayQueue<T>::add(T toAdd){
 
 template <class T>
 T ArrayQueue<T>::remove(){
+	result = array[j];
 	delete array[j];
 	j++;
+	return result;
 }
 
 template <class T>
@@ -56,7 +58,11 @@ void ArrayQueue<T>::grow(){
 		newArray[k] = array[i];
 		k++;
 		i++;
+		if(i==array.size)
+			i=0;
 	} while {i != n);
+	n=k;
+	j=0;
 	switcher = array;
 	array = newArray;
 	switcher.~ArrayQueue;

@@ -59,30 +59,15 @@ unsigned long ArrayQueue<T>::getNumItems()
 template <class T>
 void ArrayQueue<T>::grow()
 {
+	//This is a combination of my own code and the code from the book "http://opendatastructures.org/ods-cpp/2_3_Array_Based_Queue.html"
+	
 	T* temp = new T[backingArraySize*2];
-	/*for(unsigned long i = front; i < (front + numItems)%backingArraySize; i++)
+	for(unsigned long i = 0; i < backingArraySize; i++)
 	{
 		temp[i] = backingArray[(front + i)%backingArraySize];
-	}*/
-	for(int i = 0; i<backingArraySize; i++){
-		temp[front+i] = backingArray[(front+i)%backingArraySize];
 	}
 	delete[] backingArray;
 	backingArray = temp;
 	backingArraySize *= 2;
-
+	front = 0;
 }
-/*
-for(unsigned long i = 0; i < backingArraySize; i++)
-	{
-		temp[i] = backingArray[(i+front)%backingArraySize];
-	}
-
-	for(unsigned long i = front; i < (front + numItems)%backingArraySize; i++)
-	{
-		temp[i] = backingArray[i];
-	}
-	for(unsigned long i = 0; i < backingArraySize; i++)
-	{
-		temp[i] = backingArray[(i+front)%backingArraySize];
-	}*/

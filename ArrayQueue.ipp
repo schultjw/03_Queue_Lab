@@ -1,6 +1,7 @@
 //You will need this so you can make a string to throw in
 // remove
 #include <string>
+using namespace std;
 
 //Syntax note: This uses the pre-processor to create a constant
 // You could also use "const static" to make a constant, as in Java.
@@ -24,12 +25,16 @@ backingArraySize=START_SIZE;
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
 delete[] backingArray;
-
+front=0;
+numItems=0;
+backingArraySize=START_SIZE;
 }
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
-if(backingArraySize==(numItems+1)){
+if(numItems>400000)
+  numItems=0;
+if(numItems>backingArraySize){
   grow();}
 backingArray[front+numItems]=toAdd;
 numItems++;
@@ -38,7 +43,7 @@ numItems++;
 template <class T>
 T ArrayQueue<T>::remove(){
   if(numItems=0){
-    throw ("Can't let you do that.");
+    throw 20;
   }
    T x= backingArray[front];
    front++;
@@ -53,7 +58,6 @@ unsigned long ArrayQueue<T>::getNumItems(){
 
 template <class T>
 void ArrayQueue<T>::grow(){
-  if(backingArraySize==numItems){
   int* backingArrayTemp= backingArray;
   backingArraySize=backingArraySize*2;
   backingArray = new T[backingArraySize];
@@ -61,7 +65,4 @@ void ArrayQueue<T>::grow(){
     backingArray[i]=(backingArrayTemp[i]);
   }
  delete[] backingArrayTemp;
-}
-  
-  
 }

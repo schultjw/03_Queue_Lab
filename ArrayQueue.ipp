@@ -41,6 +41,9 @@ void ArrayQueue<T>::add(T toAdd)
 template <class T>
 T ArrayQueue<T>::remove()
 {
+ if(numItems == 0)
+	throw (std::string)"Empty Array!!";
+ 
   T temp = backingArray[front];
   front = (front + 1) % backingArraySize;
   numItems -= 1;
@@ -57,11 +60,29 @@ template <class T>
 void ArrayQueue<T>::grow()
 {
 	T* temp = new T[backingArraySize*2];
-	/*for(int i = front; i < (front + numItems)%backingArraySize; i++)
+	/*for(unsigned long i = front; i < (front + numItems)%backingArraySize; i++)
+	{
+		temp[i] = backingArray[(front + i)%backingArraySize];
+	}*/
+	for(int i = 0; i<backingArraySize; i++){
+		temp[front+i] = backingArray[(front+i)%backingArraySize];
+	}
+	delete[] backingArray;
+	backingArray = temp;
+	backingArraySize *= 2;
+
+}
+/*
+for(unsigned long i = 0; i < backingArraySize; i++)
+	{
+		temp[i] = backingArray[(i+front)%backingArraySize];
+	}
+
+	for(unsigned long i = front; i < (front + numItems)%backingArraySize; i++)
 	{
 		temp[i] = backingArray[i];
+	}
+	for(unsigned long i = 0; i < backingArraySize; i++)
+	{
+		temp[i] = backingArray[(i+front)%backingArraySize];
 	}*/
-	backingArray = temp;
-	delete[] temp;
-	backingArraySize *= 2;
-}

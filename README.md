@@ -26,14 +26,14 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. TODO
-2. TODO
+1. Yes, it runs at constant time
+2. If grow worked, it would run at that speed
 3. TODO
 4. TODO
-5. TODO
-6. TODO
+5. Yeah it gets rid of any extra 
+6. Constant time yeah
 7. TODO
-8. TODO
+8. Well I got all of those working so I assume it worked circularly.
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 add remove and resize would all need to be kept but the grow, front and numitems would not be needed.

@@ -1,6 +1,6 @@
 //You will need this so you can make a string to throw in
 // remove
-#include <String>
+#include <string>
 
 //Syntax note: This uses the pre-processor to create a constant
 // You could also use "const static" to make a constant, as in Java.
@@ -15,12 +15,15 @@
 // ArrayQueue<T> class.
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
-
+backingArray = new T[START_SIZE];
+front=0;
+numItems=0;
+backingArraySize=0;
 }
 
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
-
+delete[] backingArray;
 }
 
 template <class T>
@@ -30,15 +33,19 @@ void ArrayQueue<T>::add(T toAdd){
 
 template <class T>
 T ArrayQueue<T>::remove(){
-  
+  if(numItems=0){
+    throw "Can't let you do that.";
+  }
+   
+  return 0;
 }
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
-
+  return numItems;
 }
 
 template <class T>
 void ArrayQueue<T>::grow(){
-
+  
 }

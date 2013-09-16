@@ -2,6 +2,8 @@
 // remove
 #include <string>
 
+int j = 0;
+
 //Syntax note: This uses the pre-processor to create a constant
 // You could also use "const static" to make a constant, as in Java.
 // Notice, however, that START_SIZE is NOT a variable! Instead, any
@@ -15,55 +17,51 @@
 // ArrayQueue<T> class.
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
-	int n = 0;
-	int j = 0;
-	T[] array = new T[START_SIZE];
+	backingArray = new T[START_SIZE];
 }
 
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
-	for(int i = 0; i < array.length; i++)
-		delete array[i];
-	delete[] array;
+	delete[] backingArray;
 }
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
-	array[n]=toAdd;
-	n++;
-	if(this.getNumItems = array.length)
+	backingArray[front]=toAdd;
+	front++;
+	if(getNumItems() == backingArray.size())
 		grow();
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
-	result = array[j];
-	delete array[j];
+	T[] result = backingArray[j];
+	delete backingArray[j];
 	j++;
 	return result;
 }
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
-	return (j+i)%array.length;
+	return (j+front)%backingArray.size();
 }
 
 template <class T>
 void ArrayQueue<T>::grow(){
-	T[] newArray = new T[array.length*2];
+	T[] newArray = new T[backingArray.length*2];
 	T[] switcher;
-	int i = n;
+	int i = front;
 	int k = 0;
 	do{
-		newArray[k] = array[i];
+		newArray[k] = backingArray[i];
 		k++;
 		i++;
-		if(i==array.size)
+		if(i==backingArray.size)
 			i=0;
-	} while {i != n);
-	n=k;
+	} while (i != front);
+	front=k;
 	j=0;
-	switcher = array;
-	array = newArray;
+	switcher = backingArray;
+	backingArray = newArray;
 	switcher.~ArrayQueue;
 }

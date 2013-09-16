@@ -15,30 +15,49 @@
 // ArrayQueue<T> class.
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
-
+	int n = 0;
+	int j = 0;
+	T[] array = new T[START_SIZE];
 }
 
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
-
+	for(int i = 0; i < array.length; i++)
+		delete array[i];
+	delete[] array;
 }
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
-
+	array[n]=toAdd;
+	n++;
+	if(this.getNumItems = array.length)
+		grow();
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
-  
+	delete array[j];
+	j++;
 }
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
-
+	return (j+i)%array.length;
 }
 
 template <class T>
 void ArrayQueue<T>::grow(){
-
+	T[] newArray = new T[array.length*2];
+	T[] switcher;
+	int i = n;
+	int k = 0;
+	do{
+		newArray[k] = array[i];
+		k++;
+		i++;
+	} while {i != n);
+	switcher = array;
+	array = newArray;
+	switcher.~ArrayQueue;
 }

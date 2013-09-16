@@ -35,10 +35,12 @@ T ArrayQueue<T>::remove(){
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
-	return 0;
+	return numItems;
 }
 
 template <class T>
 void ArrayQueue<T>::grow(){
-
+// not constant time
+// old array too small,  make new array(twice as big) copy old data into array
+// running time n
 }

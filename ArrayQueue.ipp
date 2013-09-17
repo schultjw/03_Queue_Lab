@@ -41,10 +41,8 @@ template <class T>
 T ArrayQueue<T>::remove(){
 	T removed = backingArray[front];
 	if(numItems == 0){
-		throw (std::string)"error";
+		throw std::string("Error");
 	}
-	if(numItems == backingArraySize) 
-		grow();
 
 	front = (front + 1) % backingArraySize;
 	numItems--;
@@ -58,10 +56,10 @@ unsigned long ArrayQueue<T>::getNumItems(){
 
 template <class T>
 void ArrayQueue<T>::grow(){
-	T* newBackingArray;
-	newBackingArray = new T[2*numItems];
+	T* newBackingArray = new T[backingArraySize*2];
 	for (unsigned long i = 0; i < numItems; i++)
-		newBackingArray[i] = backingArray[(front+i) % backingArraySize];
-	*backingArray = *newBackingArray;
+		newBackingArray[front + i] = backingArray[(front+i) % backingArraySize];
+	backingArraySize = backingArraySize*2;
 	delete[] backingArray;
+	backingArray = newBackingArray;
 }

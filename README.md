@@ -29,7 +29,7 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. TODO
+1. This requirement works! A fresh Queue has 0 items in it.
 2. TODO
 3. TODO
 4. TODO
@@ -41,6 +41,7 @@ Questions
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 
 #### 3. What is one question that confused you about this excercise, or one piece of advice you would share with students next semester?
+The constructor confused me.  It took awhile for me to realize how to properly construct the Queue.
 
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
 
@@ -49,3 +50,4 @@ Questions
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?
 
 #### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?
+The purpose of a class destructor in C++ is to free up memory and clean up when an object is not needed anymore.  A class destructor is not needed in Java because Java has a garbage collector. This garbage collector frees up memory but it cannot be called like a destructor is.

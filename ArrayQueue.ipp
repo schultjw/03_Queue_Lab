@@ -7,7 +7,7 @@
 // Notice, however, that START_SIZE is NOT a variable! Instead, any
 // place that the pre-processor sees "START_SIZE" it will replace it with
 // 10 ... so this is like a global "find and replace".
-#define START_SIZE 10
+#define START_SIZE 1000
 
 //Syntax note: C++ is not very good at figuring out which methods belong
 // to which classes. That is why we have to use the scope operator to
@@ -24,14 +24,14 @@ ArrayQueue<T>::ArrayQueue(){
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
    delete[] backingArray;
-   delete this;
+   //delete this;
 
 }
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
     if(numItems+1>backingArraySize)
-    grow();
+        grow();
     backingArray[(front+numItems)%backingArraySize] = toAdd;
     numItems++;
 
@@ -39,12 +39,14 @@ void ArrayQueue<T>::add(T toAdd){
 
 template <class T>
   T ArrayQueue<T>::remove(){
-  //if(numItems==0)
+  if(numItems==0)
+    throw (std::string)"nothing to delete";
 
   T thingToRemove = backingArray[front];
   front ++;
-  if (front>=backingArraySize)
-  front = 0;
+  if (front>=backingArraySize){
+     front = 0;
+  }
   numItems -=1;
   return thingToRemove;
 }
@@ -60,17 +62,17 @@ void ArrayQueue<T>::grow(){
    int itemsCopied = 0;
    int index = 0;
    while (itemsCopied<numItems){
-      largerArray[index] = backingArray[front];
-      front++;
+      largerArray[index] = remove();
       itemsCopied++;
-      if (front==backingArraySize)
-        front = 0;
-
    }
-   
    front = 0;
    backingArraySize *=2;
    delete[] backingArray;
-   backingArray = largerArray;
+
+   backingArray = new T[backingArraySize];
+   for(int i = 0; i<=numItems; i++){
+        backingArray[i] = largerArray[i];
+   }
+   delete[] largerArray;
 
 }

@@ -16,41 +16,34 @@
 	
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
-	T* backingArray = new T[START_SIZE];
+	//T* backingArray = new T[START_SIZE];
+	backingArray = new T[START_SIZE];
 	numItems = 0;
+	front = 0; 
 }
 
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
 	delete[] backingArray;
-// cannnot delete objects that are not pointers
-	//delete [] testQueue;
-	
+
 }
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
 // ACTUALLY ADD TO ARRAY!
 	int end = (front+numItems) % backingArraySize;
-	//backingArray[end] = toAdd;
-	backingArray[0] = toAdd;
-	
+	backingArray[end] = toAdd;
 	numItems++;
-	
-		
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
 // REMOVE FROM ARRAY!
-	//throw (std::string) "Improper!";
-	//int x = backingArray[front];
+	
+	T x = backingArray[front];
 	front = (front + 1) % backingArraySize;
 	numItems--;
-	
-	//return x;
-return 6;
-
+	return x;
 }
 
 template <class T>

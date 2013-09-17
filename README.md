@@ -29,14 +29,14 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. TODO
-2. TODO
-3. TODO
-4. TODO
-5. TODO
-6. TODO
-7. TODO
-8. TODO
+1. remove takes O(1) time. Each line of code in the function remove() take constant time, and the running time does not depend on the input size.
+2. add takes O(1) time, unless it calles grow  (in that case it takes O(n) time). If numItems!=backingArraySize, then add new elements at the back of the array (this takes constant time), and increase the number of items in the array (this takes constant time). 
+3. grow is only called if numItems == backingArraySize, and the size of the array is doubled during grow. 
+4. grow takes O(n) time. A for loop is required to copy every element in the old array to the new one, so if there are n elements in the first array, then it will have n iterations. 
+5. No leak memory. The destructor deletes the memory allocated for backingArray. After grow the backingArray, the original backingArray will be deleted before it is assigned to the new backingArray. 
+6. getNumItems takes O(1) time. It contains one line of code that return numItems, which is an integer.
+7. add and remove throw exceptions as appropriate. If there is not enough memory for adding input items, a string exception will be thrown. If you try to remove an empty array, another string exception will be thrown.
+8. The array is used in a circular fashion. 
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 

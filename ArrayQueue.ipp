@@ -38,16 +38,16 @@ template <class T>
 void ArrayQueue<T>::add(T toAdd){
 
 	// if numItems == backingArraySize, grow the array
+		try{
 		if(numItems == backingArraySize){
-			try {
 				grow();
-			}
-			catch(std::exception&){
-				std::cout<< "You are out of memory" << std::endl;
-			}
 		}
 		backingArray[(front+numItems)%backingArraySize] = toAdd;
 		numItems++;
+		}
+		catch(std::string){
+			throw (std::string) "Unable to add input item. Your computer may out of memory ";
+		}
 }
 
 
@@ -64,7 +64,6 @@ T ArrayQueue<T>::remove(){
 	numItems--;
 	return removedItem;
 
-	return backingArray[0];
 }
 
 template <class T>

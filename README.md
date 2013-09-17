@@ -1,6 +1,3 @@
-Author
-==========
-"Griffith, David", griffid5
 03_Queue_Lab
 ============
 
@@ -24,6 +21,8 @@ Reading
 =======
 "Open Data Structures," Chapter 2, up through section 2.4 (ArrayDequeue). http://opendatastructures.org/ods-cpp/2_Array_Based_Lists.html
 
+Information about the Von Neumann computing model may be helpful. This optional reading is section 2.2 of "Algorithms and Data Structures: A Basic Toolbox" by Melhorn and Sanders. A free copy may be found here: http://www.mpi-inf.mpg.de/~mehlhorn/ftp/Toolbox/Introduction.pdf
+
 Questions
 =========
 
@@ -40,12 +39,18 @@ Questions
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 
+
 #### 3. What is one question that confused you about this excercise, or one piece of advice you would share with students next semester?
+One thing that has confused me is the exception handling for the add and remove methods. 
 
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
+class ArrayQueue : public queue <T> 
 
 #### 5. What is the purpose of "templates" in C++?
+The purpose of templates in C++ is so that we can use arrays with what every variables we want to. This allows for us to not have to change the implementation files everytime we want to use a different variable type. 
 
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?
+int* array = new int[10]
 
 #### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?
+The purpose of the class destructor is to make sure we don't have a memory leak after we are done using the allocated memory that we needed. We don't need them in java because the garbage collector does this for us. 

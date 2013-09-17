@@ -39,11 +39,16 @@ void ArrayQueue<T>::add(T toAdd){
 
 template <class T>
 T ArrayQueue<T>::remove(){
+	T removed = backingArray[front];
+	if(numItems == 0){
+		throw (std::string)"error";
+	}
+	if(numItems == backingArraySize) 
+		grow();
+
 	front = (front + 1) % backingArraySize;
 	numItems--;
-	if (numItems == backingArraySize) 
-		grow();
-	return *backingArray;
+	return removed;	
 }
 
 template <class T>

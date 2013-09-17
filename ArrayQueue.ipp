@@ -16,14 +16,8 @@
 	
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
-	T* backingArray = new T[START_SIZE];
+	T* backingArray = new T[10];
 	numItems = 0;
-	
-	//ArrayQueue<T> backingArray = new ArrayQueue<T>[START_SIZE];
-	//ArrayQueue(); bA = new ArrayQueue(); [START_SIZE];
-	//T* backingArray = new ArrayQueue<T> [START_SIZE];
-	//backingArray [START_SIZE] = new ArrayQueue<T*>[START_SIZE];
-	//int* j = 10;
 }
 
 template <class T>
@@ -37,26 +31,23 @@ ArrayQueue<T>::~ArrayQueue() {
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
 // ACTUALLY ADD TO ARRAY!
-
-	//ArrayQueue<T>* a = new ArrayQueue<T>[START_SIZE];
-	//if (numItems + 1 > a.length()) resize();
-	//a[a.length] = toAdd;
-	//add(toAdd);
-	//if (numItems + 1 > backingArray.length()) resize();
-	if (numItems + 1 > backingArraySize) grow();
-	backingArray[(front+numItems) % backingArraySize] = toAdd;
-	//backingArray[(j+numItems) % backingArray.length()] = toAdd;
+	int end = (front+numItems) % backingArraySize;
+	backingArray[end] = toAdd;
+	
 	numItems++;
-	//j--;
-	front++;
+	
 		
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
 // REMOVE FROM ARRAY!
-	numItems = numItems - 1;
-	return numItems;
+	int x = backingArray[front];
+	front = (front + 1) % backingArraySize;
+	numItems--;
+	
+	return x;
+
 }
 
 template <class T>

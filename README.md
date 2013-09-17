@@ -28,11 +28,11 @@ Questions
 
 1. Yes, it runs at constant time
 2. If grow worked, it would run at that speed
-3. TODO
-4. TODO
+3. Yes
+4. It would be based on the the number of items so n time would be the correct timing
 5. Yeah it gets rid of any extra 
 6. Constant time yeah
-7. TODO
+7. remove has an exception, though I'm not sure what would be required for an add function to throw an exception
 8. Well I got all of those working so I assume it worked circularly.
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.

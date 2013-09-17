@@ -35,8 +35,16 @@ template <class T>
 //Method to add items into queue
 void ArrayQueue<T>::add(T toAdd){
 	//Check if the queue is full, then resize if needed
-	if(numItems == backingArraySize)
-		grow();
+	if(numItems == backingArraySize){
+		//Not sure if this is correct way to handle memory exceptions
+		try {
+			grow();
+		}
+		//Read that this was dangerous but I'm not sure how else to handle it or what exceptions to catch
+		catch (...) {
+			throw std::string("Error");
+		}
+	}
 	backingArray[((front + numItems) % backingArraySize)] = toAdd; 
 	numItems++;
 }

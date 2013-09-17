@@ -56,7 +56,13 @@ template <class T>
 T ArrayQueue<T>::remove(){
 	// throw is not a method, it is a special keyword. 
 	// if you want to throw a string, you have to cast back to string
-	throw (std::string)"Moo mooooooooooooooo!";
+	if(numItems==0){
+	throw (std::string)"Sorry, the array is empty";
+	}
+	T removedItem = backingArray[front];
+	front = (front+ 1)%backingArraySize;
+	numItems--;
+	return removedItem;
 
 	return backingArray[0];
 }

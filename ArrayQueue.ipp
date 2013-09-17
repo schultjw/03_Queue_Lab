@@ -44,12 +44,11 @@ void ArrayQueue<T>::add(T toAdd){
 template <class T>
 //Remove Method
 T ArrayQueue<T>::remove(){
-	T toAdd = backingArray[front];
 	front = (front + 1) % backingArraySize;
 	numItems--;
 	if (numItems == backingArraySize) 
 		grow();
-	return toAdd;
+	return *backingArray;
 }
 
 template <class T>
@@ -61,9 +60,10 @@ unsigned long ArrayQueue<T>::getNumItems(){
 template <class T>
 //Method to resize the queue
 void ArrayQueue<T>::grow(){
-	T* b;
-	b = new T[2*numItems];
-	for (int i = 0; i < numItems; i++)
-		b[i] = backingArray[(front+i) % backingArraySize];
-	backingArray = b;
+	T* newBackingArray;
+	newBackingArray = new T[2*numItems];
+	for (unsigned long i = 0; i < numItems; i++)
+		newBackingArray[i] = backingArray[(front+i) % backingArraySize];
+	*backingArray = *newBackingArray;
+	delete[] backingArray;
 }

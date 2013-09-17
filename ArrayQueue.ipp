@@ -14,11 +14,9 @@
 // tell the compiler that this ArrayQueue() method belongs to the
 // ArrayQueue<T> class.
 template <class T>
-//Constructor
 ArrayQueue<T>::ArrayQueue(){
 	//Declare private Variables
 	backingArraySize = START_SIZE;
-	T* backingArray;
 	backingArray = new T[backingArraySize];
 	numItems = 0;
 	front = 0;
@@ -26,23 +24,20 @@ ArrayQueue<T>::ArrayQueue(){
 }
 
 template <class T>
-//Destructor
 ArrayQueue<T>::~ArrayQueue() {
 	//De-allocate used memory
 	delete[] backingArray;
 }
 
 template <class T>
-//Add method
 void ArrayQueue<T>::add(T toAdd){
-	if(numItems == backingArraySize) 
+	if(numItems == backingArraySize)
 		grow();
-	backingArray[(front + numItems) % backingArraySize] = toAdd; 
+	backingArray[((front + numItems) % backingArraySize)] = toAdd; 
 	numItems++;
 }
 
 template <class T>
-//Remove Method
 T ArrayQueue<T>::remove(){
 	front = (front + 1) % backingArraySize;
 	numItems--;
@@ -52,13 +47,11 @@ T ArrayQueue<T>::remove(){
 }
 
 template <class T>
-//Method to get the number of items in the queue
 unsigned long ArrayQueue<T>::getNumItems(){
 	return numItems;
 }
 
 template <class T>
-//Method to resize the queue
 void ArrayQueue<T>::grow(){
 	T* newBackingArray;
 	newBackingArray = new T[2*numItems];

@@ -31,6 +31,7 @@ ArrayQueue<T>::~ArrayQueue() {
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
 // ACTUALLY ADD TO ARRAY!
+	if ((numItems + 1) > backingArraySize) grow();
 	int end = (front+numItems) % backingArraySize;
 	backingArray[end] = toAdd;
 	numItems++;
@@ -39,11 +40,17 @@ void ArrayQueue<T>::add(T toAdd){
 template <class T>
 T ArrayQueue<T>::remove(){
 // REMOVE FROM ARRAY!
-	
-	T x = backingArray[front];
-	front = (front + 1) % backingArraySize;
-	numItems--;
-	return x;
+//	if (numItems == 0) {
+//		throw (std::string) "Improper!";
+		//throw (std::string) "Improper!";
+//	}
+//	else {
+		T x = backingArray[front];
+		front = (front + 1) % backingArraySize;
+		numItems--;
+		if (backingArraySize >= 3*numItems) grow();
+		return x;
+//	}
 }
 
 template <class T>
@@ -53,8 +60,14 @@ unsigned long ArrayQueue<T>::getNumItems(){
 
 template <class T>
 void ArrayQueue<T>::grow(){
-// if (numItems == backingArraySize)
+
+//	T* b = new T[2*START_SIZE];
+//	for (int k = 0; k < numItems; k++)
+//		b[k] = backingArray[(front+k) % backingArraySize];
+//	backingArray = b;
 // not constant time
 // old array too small,  make new array(twice as big) copy old data into array
 // running time n
 }
+
+

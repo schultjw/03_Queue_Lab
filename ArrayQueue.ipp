@@ -61,7 +61,7 @@ unsigned long ArrayQueue<T>::getNumItems(){
 template <class T>
 //Method to resize the queue
 void ArrayQueue<T>::grow(){
-	array<T> b(max(1,2*numItems));
+	ArrayQueue<T> b(max(1,2*numItems));
 	for (int i = 0; i < numItems; i++)
 		b[i] = backingArray[(front+i) % backingArraySize];
 	backingArray = b;

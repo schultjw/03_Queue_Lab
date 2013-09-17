@@ -13,24 +13,50 @@
 // to which classes. That is why we have to use the scope operator to
 // tell the compiler that this ArrayQueue() method belongs to the
 // ArrayQueue<T> class.
+	
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
-
+	T* backingArray = new T[START_SIZE];
+	numItems = 0;
+	
+	//ArrayQueue<T> backingArray = new ArrayQueue<T>[START_SIZE];
+	//ArrayQueue(); bA = new ArrayQueue(); [START_SIZE];
+	//T* backingArray = new ArrayQueue<T> [START_SIZE];
+	//backingArray [START_SIZE] = new ArrayQueue<T*>[START_SIZE];
+	//int* j = 10;
 }
 
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
-
+	delete[] backingArray;
+// cannnot delete objects that are not pointers
+	//delete [] testQueue;
+	
 }
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
+// ACTUALLY ADD TO ARRAY!
 
+	//ArrayQueue<T>* a = new ArrayQueue<T>[START_SIZE];
+	//if (numItems + 1 > a.length()) resize();
+	//a[a.length] = toAdd;
+	//add(toAdd);
+	//if (numItems + 1 > backingArray.length()) resize();
+	if (numItems + 1 > backingArraySize) grow();
+	backingArray[(front+numItems) % backingArraySize] = toAdd;
+	//backingArray[(j+numItems) % backingArray.length()] = toAdd;
+	numItems++;
+	//j--;
+	front++;
+		
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
-  return backingArray[0];
+// REMOVE FROM ARRAY!
+	numItems = numItems - 1;
+	return numItems;
 }
 
 template <class T>
@@ -40,6 +66,7 @@ unsigned long ArrayQueue<T>::getNumItems(){
 
 template <class T>
 void ArrayQueue<T>::grow(){
+// if (numItems == backingArraySize)
 // not constant time
 // old array too small,  make new array(twice as big) copy old data into array
 // running time n

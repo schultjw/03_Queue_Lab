@@ -29,18 +29,18 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. TODO
-2. TODO
-3. TODO
-4. TODO
-5. TODO
-6. TODO
-7. TODO
-8. TODO
+1. Remove() meets the requirement, because the operations do not depend on the amount of items in the queue.
+2. Add() meets the requirement because the operation does not depend on the number of items in the queue, unless grow() is called.
+3. Grow is only called inside an if statement to verify that the number of items will be equal to the size of the array after an item is added. Otherwise there is no way it can be called, so this meets the requirement.
+4. The time requirement for grow is met because the number of operations will grow with the number of items that are in the queue.
+5. Both the grow and destructor delete the backingArray with `delete[]`, so memory is not leaked.
+6. getNumItems() only returns the value of getNumItems, which requires no calculations.
+7. The remove method successfully throws a string exception.
+8. The array works in a circular fashion, courtesy of an if statement that moves the front variable to the first index of the backing array when it reaches the end.
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 
-#### 3. What is one question that confused you about this excercise, or one piece of advice you would share with students next semester?
+#### 3. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
 
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
 

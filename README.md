@@ -14,7 +14,7 @@ Requirements
 4. grow takes O(n) time
 5. Do not leak memory (make sure grow and the destructor do the right thing)
 6. getNumItems is O(1) time
-7. add and remove throw excpetions as appropriate
+7. add and remove throw exceptions as appropriate
 8. You must use the array in a circular fashion. If you don't do this you probably won't be able to get #1, #2 and #3 to all be true.
 
 Reading
@@ -26,14 +26,14 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. TODO
-2. TODO
-3. TODO
-4. TODO
-5. TODO
-6. TODO
-7. TODO
-8. TODO
+1. Working, was originally returning the new front variable but eventually understood to return the removed variable.
+2. Working, my biggest issue was correctly initializing the array in the constructor to get this to work.
+3. Working, if statements control the calling of the method and in grow I double both the new array's size and the backingArraySize variable.
+4. Working, I'm unsure of how to calculate this exactly but I believe based on the example from the book it is  O(n) time.
+5. Working, both the grow method and destructor call the delete[] operator.
+6. Working, easiest method in the homework. (Which Dr. Brinkman was kind enough to give us)
+7. I believe both are working. Remove definitely works, but for the add method I was unsure of how to exactly use try and catch blocks, and what exceptions to catch. But I believe both are technically working.
+8. Working, based on the logic from the book and the fact that I had all successful tests I'm fairly certain this is correct.
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 

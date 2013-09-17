@@ -16,10 +16,11 @@
 // ArrayQueue<T> class.
 
 template <class T>
-ArrayQueue<T>::ArrayQueue(){
+ArrayQueue<T>::ArrayQueue()
+{
 
-    //Initizlize the size of array as 10.
-    backingArraySize = 10;
+        //Initizlize the size of array as 10.
+        backingArraySize = START_SIZE;
     
 	//Allocate the memory.
 	backingArray = new T[backingArraySize];
@@ -32,43 +33,47 @@ ArrayQueue<T>::ArrayQueue(){
 }
 
 template <class T>
-ArrayQueue<T>::~ArrayQueue() {
+ArrayQueue<T>::~ArrayQueue() 
+{
     
 	//Free the memory.
 	delete [] backingArray;
 
-	//Set backingArray to be NULL, just trying to be safe.
+	//Set backingArray to be NULL.
 	backingArray = NULL;
 }
 
 template <class T>
-void ArrayQueue<T>::add(T toAdd){
+void ArrayQueue<T>::add(T toAdd)
+{
 
 //To check if backingArray is full.
 
   if(numItems + 1 > backingArraySize)
 
-    {
-			grow();
-	}
+     {
+	   grow();
+     
+     }
 	
-	backingArray[ ( front + numItems ) % backingArraySize ] = toAdd;
+  backingArray[ ( front + numItems ) % backingArraySize ] = toAdd;
 
-	//After adding one element in the queue, increase the number of element as one.
-	numItems++;
+  //After adding one element in the queue, increase the number of element as one.
+	 numItems++;
 }
 
 template <class T>
-T ArrayQueue<T>::remove(){
+T ArrayQueue<T>::remove()
+{
    
-   //Create a object which will return a element needs to be removed.
+   //Create a object which will hold a element that needs to be removed.
    T rm;
 
   //Throw a exception if no element in the queue.
   if(numItems == 0)
       {
 	  throw std::string("Error! There is no element is the queue.");
-	  }
+      }
 
 
   //According to the FIFO policy, store the front element in the queue.
@@ -107,6 +112,7 @@ void ArrayQueue<T>::grow()
 
 	while(count<numItems){
 
+                //Exactly copy the elements from old array to new array.
 		newArray[ ( front+count % backingArraySize )] = backingArray[ ( front+count ) % backingArraySize ];
 
 		count++;

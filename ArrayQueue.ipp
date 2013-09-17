@@ -16,11 +16,10 @@
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
 
-	int* backingArray = new int [START_SIZE];
-	int arrayLength = START_SIZE;
-	int numItems = 0;
-	int front = 0;
-	int end = (front + numItems)%arrayLength;
+	backingArray = new int [START_SIZE];
+	backingArraySize = START_SIZE;
+	numItems = 0;
+	front = 0;
 }
 
 template <class T>
@@ -30,18 +29,18 @@ ArrayQueue<T>::~ArrayQueue() {
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
-	if (toAdd + 1 > backingArray.arrayLength) 
+	if (numItems == backingArraySize) 
 		grow();
-	backingArray[(front + numItems)] % backingArray.arrayLength = toAdd;
+	toAdd = backingArray[(front + numItems)] % backingArraySize;
 	numItems++;	 
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
-  int x = a[front];
-  front = (front + 1) % backingArray.arrayLength;
+  int x = backingArray[front];
+  front = (front + 1) % backingArraySize;
   numItems--;
-  if (backingArray.arrayLength >= 3*n) 
+  if (backingArraySize >= 3*backingArraySize) 
 	grow();
 return x;
 }
@@ -53,8 +52,6 @@ unsigned long ArrayQueue<T>::getNumItems(){
 
 template <class T>
 void ArrayQueue<T>::grow(){
-	array<int> grow(max(1, 2*n));
-	for (int i = 0; i < numItems; i++) 
-		grow[i] = backingArray[(front + i) % backingArray.arrayLength];
-	backingArray = grow;
+	backingArray = new int [backingArraySize];
+
 }

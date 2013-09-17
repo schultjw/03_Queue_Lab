@@ -30,12 +30,13 @@ void ArrayQueue<T>::add(T toAdd){
 
 template <class T>
 T ArrayQueue<T>::remove(){
-  
+  throw (std::string) "Moo moooooooooo!"; 
+  return backingArray[0];
 }
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
-
+return numItems;
 }
 
 template <class T>

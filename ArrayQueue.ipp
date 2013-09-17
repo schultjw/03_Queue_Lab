@@ -43,7 +43,7 @@ void ArrayQueue<T>::add(T toAdd){
 				grow();
 			}
 			catch(std::exception&){
-				std::cout<< "You are out of memory\n";
+				std::cout<< "You are out of memory" << std::endl;
 			}
 		}
 		backingArray[(front+numItems)%backingArraySize] = toAdd;
@@ -69,18 +69,17 @@ T ArrayQueue<T>::remove(){
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
-	
-	
 	return numItems;
 }
 
 template <class T>
 void ArrayQueue<T>::grow(){
-	T* newBackingArray = new T[backingArraySize * 2];
+	T* newBackingArray = new T[backingArraySize*2];
 	for(unsigned int i =0; i<backingArraySize; i++){
-		newBackingArray[i] = backingArray[i];
+		newBackingArray[front+i] = backingArray[(front + i) % backingArraySize];
 	}
-
+	backingArraySize = backingArraySize*2;
 	delete[] backingArray;
 	backingArray = newBackingArray;
+	
 }

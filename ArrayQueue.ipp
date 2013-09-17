@@ -17,6 +17,7 @@ int n = 0;
 // ArrayQueue<T> class.
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
+	front = 0;
 	backingArray = new T[START_SIZE];
 }
 
@@ -27,17 +28,23 @@ ArrayQueue<T>::~ArrayQueue() {
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
-	backingArray[n]=toAdd;
-	n++;
 	if(getNumItems() == backingArraySize)
 		grow();
+	else if(n==backingArraySize)
+		n=0;
+	backingArray[n]=toAdd;
+	n++;
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
-	T result = backingArray[front];
-	front++;
-	return result;
+	if(getNumItems() == 0)
+		throw std::string("That space in the queue is empty!");
+	else{
+		T result = backingArray[front];
+		front++;
+		return result;
+	}
 }
 
 template <class T>

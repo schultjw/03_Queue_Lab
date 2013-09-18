@@ -48,6 +48,8 @@ I wasn't sure how to handle deletion of the old backingArray in the grow functio
 
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
 
+You use a colon instead of "extends," like so: class ArrayQueue : Queue.
+
 #### 5. What is the purpose of "templates" in C++?
 
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?

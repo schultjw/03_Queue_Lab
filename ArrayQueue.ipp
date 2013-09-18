@@ -98,7 +98,7 @@ void ArrayQueue<T>::grow(){
 
 	for(unsigned long i = 0; i < backingArraySize; i++)
 	{
-		newQueue[(front + numItems) % backingArraySize] = backingArray[i];
+		newQueue[front + i] = backingArray[(front+i) % backingArraySize];
 	}
 
 	delete[] backingArray;

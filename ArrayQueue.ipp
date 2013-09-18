@@ -30,15 +30,16 @@ void ArrayQueue<T>::add(T toAdd){
 
 template <class T>
 T ArrayQueue<T>::remove(){
-  
+  throw (std::string)"This is to cast something into a string";
+  return backingArray[0];
 }
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
-
+ return numItems;
 }
 
 template <class T>
 void ArrayQueue<T>::grow(){
-
+//Twice as big as the original
 }

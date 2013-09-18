@@ -35,7 +35,7 @@ Questions
 4. The time requirement for grow is met because the number of operations will grow with the number of items that are in the queue.
 5. Both the grow and destructor delete the backingArray with `delete[]`, so memory is not leaked.
 6. getNumItems() only returns the value of getNumItems, which requires no calculations.
-7. The remove method successfully throws a string exception.
+7. The remove method successfully throws a string exception, and the grow method should throw an exception if a new array could not be allocated in memory.
 8. The array works in a circular fashion, courtesy of an if statement that moves the front variable to the first index of the backing array when it reaches the end.
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.

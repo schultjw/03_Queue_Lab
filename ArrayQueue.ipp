@@ -15,7 +15,10 @@
 // ArrayQueue<T> class.
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
-
+	backingArray = new T[START_SIZE];
+	front = backingArray[0];
+	numItems = 0;
+	backingArraySize = START_SIZE;
 }
 
 template <class T>
@@ -30,12 +33,12 @@ void ArrayQueue<T>::add(T toAdd){
 
 template <class T>
 T ArrayQueue<T>::remove(){
-  
+	return 0;
 }
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
-
+	return numItems;
 }
 
 template <class T>

@@ -40,9 +40,11 @@ Questions
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 
-We could get rid of the front variavle, because a Stack adds and removes from the back, so it doesn't need to know where the front is.  It still needs all of the other variables and functions, though.
+We could get rid of the front variable, because a Stack adds and removes from the back, so it doesn't need to know where the front is.  It still needs all of the other variables and functions, though.
 
 #### 3. What is one question that confused you about this excercise, or one piece of advice you would share with students next semester?
+
+I wasn't sure how to handle deletion of the old backingArray in the grow function.
 
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
 

@@ -52,8 +52,7 @@ T ArrayQueue<T>::remove(){
 	numItems--;
 	
 	return x;
-		
-		
+	
 }
 
 template <class T>
@@ -63,8 +62,15 @@ unsigned long ArrayQueue<T>::getNumItems(){
 
 template <class T>
 void ArrayQueue<T>::grow(){
+	int size = backingArraySize*2;
 
-	T* b = new T[backingArraySize*2];
+	if (backingArraySize == 0)
+		size = 1;
+
+	T* b = new T[size];
+
+	if (b == NULL)
+		throw (std::string) "Array is Null!";
 
 	for (int k = 0; k < numItems; k++){
 		b[k] = backingArray[(front+k) % backingArraySize];

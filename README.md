@@ -38,19 +38,19 @@ Questions
 8. Working. My array is using the circular fashion because tests 1, 2 and 3 were all passed and based on how my code is written users should be able to tell I am using a circular array. 
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
-
+The one variable we could get rid of in is front since the stack is based on LIFO, thus not needing to have a front variable. We need to keep grow,  numItems and backingArraySize because we still need to grow the array if it becomes full and we use backingArraySize and numItems to test for this. 
 
 #### 3. What is one question that confused you about this excercise, or one piece of advice you would share with students next semester?
-One thing that has confused me is the exception handling for the add and remove methods. 
+One thing that confused me in the beginning was the exception handling for the add method which you really place in the grow method.  
 
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
-class ArrayQueue : public queue <T> 
+class ArrayQueue : public queue 
 
 #### 5. What is the purpose of "templates" in C++?
-The purpose of templates in C++ is so that we can use arrays with what every variables we want to. This allows for us to not have to change the implementation files everytime we want to use a different variable type. 
+The purpose of templates in C++ is so that we can use different data types as necessary without having to state this up front. This allows for us to not have to change the implementation files everytime we want to use a different variable type. 
 
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?
-int* array = new int[10]
+int* array = new int[10];
 
 #### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?
-The purpose of the class destructor is to make sure we don't have a memory leak after we are done using the allocated memory that we needed. We don't need them in java because the garbage collector does this for us. 
+The purpose of the class destructor is to make sure we don't have a memory leak after we are done using the allocated memory that we needed so the destructor de-allocates this memory. We don't need them in java because the garbage collector does this for us. 

@@ -35,7 +35,15 @@ numItems++;
 
 template <class T>
 T ArrayQueue<T>::remove(){
+    if(numItems==0)
+   throw (std::string)"You have no items to remove you idiot";
   
+  //item to be removed
+  T itemRemoved = backingArray[front];
+	front = (front+ 1)%backingArraySize;
+    numItems=numItems-1;
+    
+    return itemRemoved;
 }
 
 template <class T>

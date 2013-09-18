@@ -15,11 +15,16 @@
 // ArrayQueue<T> class.
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
-
+    
 }
 
 template <class T>
+
+
 ArrayQueue<T>::~ArrayQueue() {
+    front = 0;
+    numItems = 0;
+    backingArraySize = START_SIZE;
 
 }
 

@@ -31,12 +31,12 @@ Questions
 
 1. TODO
 2. TODO
-3. TODO
+3. This requirement works. I made an if statement in the add function where if numItems == backingArraySize the method grow is called.  In grow the size of the array is doubled.
 4. TODO
 5. TODO
 6. TODO
-7. TODO
-8. TODO
+7. This requirement works. An exception is thrown when the remove function is called on an ArrayQueue that has 0 items.
+8. This requirement works. The array is used in a circular fashion. I tested this by changing the front value and making sure all the methods still returned SUCCESS.
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 If we did a Stack instead of a Queue, the private methods we would need to keep would be grow. Grow allows the arraySize to increase if more items needed to be added than there is space in the Stack.

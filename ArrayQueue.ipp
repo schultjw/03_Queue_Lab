@@ -55,7 +55,7 @@ void ArrayQueue<T>::grow(){
 	int i = 0;
 	T* tempArray = new T[backingArraySize*2];
 	while(i < numItems){
-		tempArray[front + i] = backingArray[front+ i] % backingArraySize;
+		tempArray[front + i] = backingArray[(front+ i) % backingArraySize];
 	}
 	backingArraySize*=2;
 	delete backingArray;

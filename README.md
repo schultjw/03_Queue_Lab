@@ -29,14 +29,14 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. COW
-2. TODO
-3. TODO
-4. TODO
-5. TODO
-6. TODO
-7. TODO
-8. TODO
+1. Remove() works successfully.
+2. add() works successfully.
+3. grow() works successfully.
+4. grow() works successfully.
+5. works successfully.
+6. getNumItems() works successfully.
+7. add and remove throw exceptions appropriately
+8. works successfully.
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 

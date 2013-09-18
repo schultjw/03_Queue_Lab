@@ -34,16 +34,18 @@ then it will take 0(n)
 5. Works needed to make sure in the destrcutor to call delete[] on backingArray before reinitializing it.
 6. Works it is one simple call.
 7. Works they through exceptions according to when the instructions ask to throw.
-8. Works done by using the % as explained in the readings.
+8. Works I think.  It passed the tests and as far as i can tell works.  done by using the % as explained in the readings.
 
-#### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
+#### 2.  Since stack knows its size you can get rid if the backingSizeVaraible.
 
-#### 3. None I think overal this was a pretty good lab to get the hang of how Queues qork using modulus.
+#### 3. None I think overal this was a pretty good lab to get the hang of how Queues work using modulus.
 
 #### 4. #include "filename"
 
-#### 5. What is the purpose of "templates" in C++?
+#### 5. It is basically the equivalent of an abstract class in java.  It initializes some of the variables and 
+		methods for a class.  also it allows you to use any data types instead of one specific one.
 
-#### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?
+#### 6. int* something = new int[10];
 
-#### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?
+#### 7. You need to do this in c++ and not java because Java does it for you autimatically.  It must be done so 
+		the allocated memory is cleared when you dont need it any more, other wise it may cause a memory leak.

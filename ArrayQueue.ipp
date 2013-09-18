@@ -36,12 +36,21 @@ void ArrayQueue<T>::add(T toAdd){
         grow();
         }
 
-        backingArray[(front+1)%backingArraySize
+        backingArray[(front + numItems) % backingArraySize] = toAdd;
 
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
+
+    T remove = backingArray[front];  //store value to return
+    front = (front +1) % backingArraySize;  //moves front up one index, or returns it to index 0 if
+        //we have reached the end
+    numItems--;  //record that we have one less item in the array
+    
+
+
+    return remove;
   
 }
 
@@ -53,11 +62,13 @@ unsigned long ArrayQueue<T>::getNumItems(){
 template <class T>
 void ArrayQueue<T>::grow(){
     
-    backingArrayTemp = new T[2 * backingArraySize];
+    T* backingArrayTemp = new T[2 * backingArraySize];
     
     for (i = 0; i < backingArraySize; i++) {
         backingArrayTemp[i] = backingArray[i];
     }
+    
+    backingArraySize = backingArraySize * 2;
     
     delete[] backingArray;
     backingArray = backingArrayTemp;

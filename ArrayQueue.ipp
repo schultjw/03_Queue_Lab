@@ -36,7 +36,7 @@ void ArrayQueue<T>::add(T toAdd){
 
 template <class T>
 T ArrayQueue<T>::remove(){
-  if(numItems < 0) throw (std::string)"You have no items to remove!";
+  if(numItems <= 0) throw (std::string)"You have no items to remove!";
 
   numItems--;
   int tempInteger = front;
@@ -57,9 +57,9 @@ void ArrayQueue<T>::grow(){
 	if(tempArray == NULL) throw (std::string)"Not enough Memory for your array";
 	while(i < numItems){
 		tempArray[front + i] = backingArray[(front+ i) % backingArraySize];
+		i++;
 	}
 	backingArraySize*=2;
 	delete backingArray;
 	backingArray = tempArray;
-	front = 0;
 }

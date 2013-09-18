@@ -19,17 +19,24 @@ ArrayQueue<T>::ArrayQueue(){
 }
 
 template <class T>
-
-
 ArrayQueue<T>::~ArrayQueue() {
     front = 0;
     numItems = 0;
     backingArraySize = START_SIZE;
+    
+    backingArray = new T[backingArraySize];
 
 }
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
+    //if the backing array is full, create a larger one and copy in the elements
+    
+    if(numItems == backingArraySize){
+        grow();
+        }
+
+        backingArray[(front+1)%backingArraySize
 
 }
 
@@ -45,5 +52,15 @@ unsigned long ArrayQueue<T>::getNumItems(){
 
 template <class T>
 void ArrayQueue<T>::grow(){
+    
+    backingArrayTemp = new T[2 * backingArraySize];
+    
+    for (i = 0; i < backingArraySize; i++) {
+        backingArrayTemp[i] = backingArray[i];
+    }
+    
+    delete[] backingArray;
+    backingArray = backingArrayTemp;
+    
 
 }

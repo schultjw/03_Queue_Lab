@@ -52,8 +52,10 @@ One piece of advice that I would share with students next semester is to make su
 To write the same thing you would write class ArrayQueue : public Queue <T>, where the child class is ArrayQueue and the parent class is Queue.
 
 #### 5. What is the purpose of "templates" in C++?
+The purpose of templates in C++ is to allow adaptability to more than one type or class. For instance, a template can be used by different types or classes. It saves space and times because then the entire code does not have to be repeated for each type.
 
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?
+The syntax for allocating an array of 10 ints in C++ would be int* arrayName = new int[10];
 
 #### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?
 The purpose of a class destructor in C++ is to free up memory and clean up when an object is not needed anymore.  A class destructor is not needed in Java because Java has a garbage collector. This garbage collector frees up memory but it cannot be called like a destructor is.

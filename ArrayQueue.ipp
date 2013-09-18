@@ -54,6 +54,7 @@ template <class T>
 void ArrayQueue<T>::grow(){
 	int i = 0;
 	T* tempArray = new T[backingArraySize*2];
+	if(tempArray == NULL) throw (std::string)"Not enough Memory for your array";
 	while(i < numItems){
 		tempArray[front + i] = backingArray[(front+ i) % backingArraySize];
 	}

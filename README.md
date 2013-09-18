@@ -59,3 +59,5 @@ Templates sort of take the place of interfaces or abstract classes in Java.  The
 int* array = new int[10]
 
 #### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?
+
+A class destructor deletes the elements of the class object to free up memory for later things.  We don't need them in Java because Java handles such garbage collection duties for us.  In C++ however, that is left to the programmer.

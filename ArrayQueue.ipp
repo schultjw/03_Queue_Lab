@@ -22,7 +22,7 @@ ArrayQueue<T>::ArrayQueue(){
 	backingArraySize = START_SIZE;
 	numItems = 0;
 	front = 0;
-	backingArray = new backingArray[backingArraySize];
+	backingArray = new T[backingArraySize];
 }
 
 /*
@@ -42,14 +42,14 @@ template <class T>
 void ArrayQueue<T>::add(T toAdd){
 	
 	//If to big grow array
-	if(numItems >= backingArray)
+	if(numItems == backingArraySize)
 		grow();
 
 	//Use Modulus to creat circuler array
 	backingArray[(front + numItems) % backingArraySize] = toAdd;
 
 	//Add One to num items in list
-	numItems =+ 1;
+	numItems++;
 }
 
 /*
@@ -61,12 +61,15 @@ template <class T>
 T ArrayQueue<T>::remove(){
 
 	if(numItems == 0)
-		throw std::string "The Queue has zero items cannot remove";
+		throw std::string("The Queue has zero items cannot remove");
+
 	T  itemRemoved = backingArray[front];
 
-	front = backingArray[(front + 1) % backingArraySize];
-
 	
+	front = (front + 1) % backingArraySize;
+	numItems--;
+
+	return itemRemoved;
 }
 
 /*
@@ -79,6 +82,7 @@ unsigned long ArrayQueue<T>::getNumItems(){
 return numItems;
 }
 
+
 /*
 Our remove method
 Grows our Queue by doubling it
@@ -87,4 +91,17 @@ returns - void
 template <class T>
 void ArrayQueue<T>::grow(){
 
+	T* newQueue = new T[backingArraySize*2];
+	 
+	if(newQueue == NULL)
+		throw std::string("Array Is too Big! How did you do this!!");
+
+	for(unsigned long i = 0; i < backingArraySize; i++)
+	{
+		newQueue[(front + numItems) % backingArraySize] = backingArray[i];
+	}
+
+	delete[] backingArray;
+	backingArraySize = backingArraySize*2;
+	backingArray = newQueue;
 }

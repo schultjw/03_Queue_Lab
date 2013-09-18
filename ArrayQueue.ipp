@@ -25,10 +25,10 @@ ArrayQueue<T>::ArrayQueue()
 	//Allocate the memory.
 	backingArray = new T[backingArraySize];
 
-	//The front index of element in queue.
+	//The front index of element in array.
 	front = 0;
 
-	//Record the number of elements in the queue.
+	//Record the number of elements in the array.
 	numItems = 0;
 }
 
@@ -52,13 +52,22 @@ void ArrayQueue<T>::add(T toAdd)
   if(numItems + 1 > backingArraySize)
 
      {
+     
+     if(backingArray == NULL)
+     {
+        
+        throw std::string("Error! Something bad happens in array");
+     
+     }
+     
+     
 	   grow();
      
      }
 	
   backingArray[ ( front + numItems ) % backingArraySize ] = toAdd;
 
-  //After adding one element in the queue, increase the number of element as one.
+  //After adding one element in the array, increase the number of element as one.
 	 numItems++;
 }
 
@@ -69,14 +78,14 @@ T ArrayQueue<T>::remove()
    //Create a object which will hold a element that needs to be removed.
    T rm;
 
-  //Throw a exception if no element in the queue.
+  //Throw a exception if no element in the array.
   if(numItems == 0)
       {
 	  throw std::string("Error! There is no element is the queue.");
       }
 
 
-  //According to the FIFO policy, store the front element in the queue.
+  //According to the FIFO policy, store the front element in the array.
   rm = backingArray[front];
 
 
@@ -86,7 +95,7 @@ T ArrayQueue<T>::remove()
 
 
 
-  //Decrease the number of element in the queue.
+  //Decrease the number of element in the array.
   numItems--;
 
   //Return rm.
@@ -105,7 +114,7 @@ void ArrayQueue<T>::grow()
 {
  
    
-    //To increase the front index of queue.
+    //To increase the front index of array.
     int count = 0;
 
     T *newArray = new T[2 * backingArraySize];
@@ -119,8 +128,18 @@ void ArrayQueue<T>::grow()
 	}
 
 	backingArraySize = 2 * backingArraySize;
-
+	
+	
 	//Copy the array.
 	backingArray = newArray;
+	
+	//Delete the temporary newArray
+	
+	delete[]newArray;
+	
+	//Set temporary array to be NULL.
+	
+	newArray = NULL;
+	
 
 }

@@ -24,29 +24,22 @@ ArrayQueue<T>::ArrayQueue(){
   front = 0;
   numItems = 0;
   backingArraySize = START_SIZE;
-
 }
 
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
   delete[] backingArray;
-
-
 }
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd) {
-  if (numItems == backingArraySize)
-	grow();
+  if (numItems == backingArraySize) {
+    grow();
+  }
   backingArray[(numItems+front)%backingArraySize]  = toAdd;
-
-  
-
-	  numItems++;
+  numItems++;
   
   
-
- 
 }
 
 template <class T>
@@ -57,17 +50,13 @@ T ArrayQueue<T>::remove(){
 		numItems--;
 		front++;
 		if (front == backingArraySize) {
-		front = 0;
-		return backingArray[backingArraySize-1];
+			front = 0;
+			return backingArray[backingArraySize-1];
 		} else {
-		front = front%backingArraySize;
-		return backingArray[front-1];
-		
-
-	}
-}
-	
-  
+			front = front%backingArraySize;
+			return backingArray[front-1];
+			}
+		}  
 }
 
 template <class T>
@@ -79,6 +68,9 @@ unsigned long ArrayQueue<T>::getNumItems(){
 template <class T>
 void ArrayQueue<T>::grow(){
 	T* secondArray = new T[backingArraySize*2];
+	if (secondArray == NULL) {
+	  throw std::string("There is no more room left for the Queue to expand.");
+	}
 	for (int i = 0; i < (int)numItems; i++) {
 	  secondArray[i]=backingArray[(i+front)%backingArraySize];
 	}
@@ -86,5 +78,4 @@ void ArrayQueue<T>::grow(){
 	delete[] backingArray;
 	backingArray = secondArray;
 	backingArraySize = backingArraySize*2;
-
 }

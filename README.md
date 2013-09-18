@@ -29,14 +29,14 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. TODO
-2. TODO
-3. TODO
-4. TODO
-5. TODO
-6. TODO
-7. TODO
-8. TODO
+1. Remove takes O(1) time, as the implementation is not based on the number of items in the array.
+2. Add takes O(1) time without grow, because its implementation does not depend on the number of items in the array. With grow, it achieves O(n) time, because the method time depends on the number of items in the array, in a linear fashion.
+3. Grow is only called when items == backingArraySize, and the array is doubled every use of grow.
+4. Grow does take O(n) time, because it must read through the array and copy each individual number, forcing the grow method to take linear time, as it has to read everything in the array once.
+5. In grow and the destructor, the correct variables are destructed to avoid a memory leak.
+6. GetNumItems takes O(1) time, as the total number of items is stored in a variable and is not calculated each time the method is run.
+7. Add throws an exception if the array cannot be correctly allocated, while remove throws an exception if remove is called when there is no valid data in the array.
+8. The array is in a circular fashion, as it wraps around itself in the correct way.
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 The grow() method would have to be removed or reimplemented. If you use the same logic that governs resizing a queue, the new, larger stack would be in the reverse order. The definition of a stack means that the most recent item added would be removed first, which then would be added to the new stack, and be the first thing added to the stack instead of being the most recent. Then, you would only need one of either "numItems" or "front". The definition of a stack restricts the addition and removal of items on one end of the array, so you only need one variable to store the length of the array. The number of items in the array will always be one more than the index of the array that contains the most recently added data.

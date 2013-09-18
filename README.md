@@ -26,20 +26,21 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. TODO
-2. TODO
-3. TODO
-4. TODO
-5. TODO
-6. TODO
-7. TODO
-8. TODO
+1. Works it should only take 0(1) to remove an item
+2. Works it should only take 0(1) to add an item unless there is not enough space and you must grow the array
+then it will take 0(n)
+3. Works takes a new array and makes its size double the old one then adds the items from the old array to the new one.
+4. Works it only takes 0(n);
+5. Works needed to make sure in the destrcutor to call delete[] on backingArray before reinitializing it.
+6. Works it is one simple call.
+7. Works they through exceptions according to when the instructions ask to throw.
+8. Works done by using the % as explained in the readings.
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 
-#### 3. What is one question that confused you about this excercise, or one piece of advice you would share with students next semester?
+#### 3. None I think overal this was a pretty good lab to get the hang of how Queues qork using modulus.
 
-#### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
+#### 4. #include "filename"
 
 #### 5. What is the purpose of "templates" in C++?
 

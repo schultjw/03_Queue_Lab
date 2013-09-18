@@ -52,6 +52,8 @@ You use a colon instead of "extends," like so: class ArrayQueue : Queue.
 
 #### 5. What is the purpose of "templates" in C++?
 
+Templates sort of take the place of interfaces or abstract classes in Java.  They provide an outline of a class that you will flesh out later in a class that extends that one.
+
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?
 
 #### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?

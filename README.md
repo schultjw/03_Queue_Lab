@@ -29,7 +29,7 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. This requirement works! A fresh Queue has 0 items in it.
+1. TODO
 2. TODO
 3. TODO
 4. TODO
@@ -39,6 +39,10 @@ Questions
 8. TODO
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
+If we did a Stack instead of a Queue, the private methods we would need to keep would be grow. Grow allows the arraySize to increase if more items needed to be added than there is space in the Stack.
+The private variable that we would need to keep would include backingArray, numItems, and backingArraySize. Since Stack is LIFO (Last In First Out) the size of the Stack needs to be known, as well as how many items are in the Stack.  
+The private variable front is not needed because in a Stack it is LIFO which means last in first out. The front index does not need to be known, only the size of the Stack so that the last element can be removed first.
+Currently have: grow backingArray numItems front backingArraySize
 
 #### 3. What is one question that confused you about this excercise, or one piece of advice you would share with students next semester?
 The constructor confused me.  It took awhile for me to realize how to properly construct the Queue.

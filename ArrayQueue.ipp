@@ -80,6 +80,7 @@ void ArrayQueue<T>::grow(){
 	backingArraySize = backingArraySize*2;
 
 	front = 0;
+
 }
 
 

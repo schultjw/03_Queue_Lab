@@ -23,23 +23,26 @@ ArrayQueue<T>::ArrayQueue(){
   backingArray = new int[START_SIZE];
   front = 0;
   numItems = 0;
-  backingArraySize = 10;
+  backingArraySize = START_SIZE;
 
 }
 
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
+  delete[] backingArray;
 
 
 }
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd) {
-  backingArray[(numItems+front)%backingArraySize]  = toAdd;
   if (numItems == backingArraySize)
 	grow();
-  numItems = (numItems + front) % (BackingArraySize);
+  backingArray[(numItems+front)%backingArraySize]  = toAdd;
 
+  
+
+	  numItems++;
   
   
 
@@ -48,9 +51,8 @@ void ArrayQueue<T>::add(T toAdd) {
 
 template <class T>
 T ArrayQueue<T>::remove(){
-try {
-	if (numItems-front == 0 )
-		throw 55;
+	if (numItems == 0 )
+		throw std::string("There is not anything in the Queue, please add something to the Queue before you remove anything.");
 	else {
 		numItems--;
 		front++;
@@ -60,16 +62,10 @@ try {
 		} else {
 		front = front%backingArraySize;
 		return backingArray[front-1];
-		}
+		
 
 	}
 }
-
-catch (int e) {
-	e = 5;
-	std::cout << "There is no object in the array, you cannot remove";
-
-	}
 	
   
 }
@@ -82,12 +78,13 @@ unsigned long ArrayQueue<T>::getNumItems(){
 
 template <class T>
 void ArrayQueue<T>::grow(){
-  /*int* secondArray = new int[backingArraySize*2];
-  for (int i = 0; i < backingArraySize; i++) {
-    secondArray[i] = backingArray[i];
-  }
-  backingArray.delete[];
-  backingArray=secondArray;
-  */
+	T* secondArray = new T[backingArraySize*2];
+	for (int i = 0; i < (int)numItems; i++) {
+	  secondArray[i]=backingArray[(i+front)%backingArraySize];
+	}
+	front = 0;
+	delete[] backingArray;
+	backingArray = secondArray;
+	backingArraySize = backingArraySize*2;
 
 }

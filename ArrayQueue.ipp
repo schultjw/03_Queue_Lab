@@ -24,14 +24,13 @@ ArrayQueue<T>::ArrayQueue(){
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
    delete[] backingArray;
-   //delete this;
-
 }
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
     if(numItems+1>backingArraySize)
         grow();
+    
     backingArray[(front+numItems)%backingArraySize] = toAdd;
     numItems++;
 
@@ -40,14 +39,15 @@ void ArrayQueue<T>::add(T toAdd){
 template <class T>
   T ArrayQueue<T>::remove(){
   if(numItems==0)
-    throw (std::string)"nothing to delete";
+    throw (std::string)"No elements in the array, nothing deleted.";
 
   T thingToRemove = backingArray[front];
   front ++;
   if (front>=backingArraySize){
      front = 0;
   }
-  numItems -=1;
+ 
+   numItems -=1;
   return thingToRemove;
 }
 
@@ -59,12 +59,16 @@ unsigned long ArrayQueue<T>::getNumItems(){
 template <class T>
 void ArrayQueue<T>::grow(){
    T* largerArray = new T[backingArraySize*2];
+   if(largerArray==NULL)
+        throw (std::string)"Not enough memory to create new array.";
+  
    int itemsCopied = 0;
    int index = 0;
    while (itemsCopied<numItems){
       largerArray[index] = remove();
       itemsCopied++;
    }
+  
    front = 0;
    backingArraySize *=2;
    delete[] backingArray;

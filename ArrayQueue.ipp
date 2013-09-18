@@ -36,7 +36,7 @@ T ArrayQueue<T>::remove(){
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
-
+return numItems;
 }
 
 template <class T>

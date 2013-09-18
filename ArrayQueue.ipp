@@ -62,6 +62,4 @@ void ArrayQueue<T>::grow(){
 	delete backingArray;
 	backingArray = tempArray;
 	front = 0;
-
-	std::cout << "Hello?" << std::endl;
 }

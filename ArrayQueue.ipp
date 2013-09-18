@@ -14,31 +14,71 @@
 // tell the compiler that this ArrayQueue() method belongs to the
 // ArrayQueue<T> class.
 template <class T>
+//Constructor
 ArrayQueue<T>::ArrayQueue(){
-
+	//Declare private Variables
+	backingArraySize = START_SIZE;
+	backingArray = new T[backingArraySize];
+	numItems = 0;
+	front = 0;
 }
 
 template <class T>
+//Destructor
 ArrayQueue<T>::~ArrayQueue() {
-
+	//De-allocate used memory
+	delete[] backingArray;
 }
 
 template <class T>
+//Method to add items into queue
 void ArrayQueue<T>::add(T toAdd){
-
+	//Check if the queue is full, then resize if needed
+	if(numItems == backingArraySize){
+		//Not sure if this is correct way to handle memory exceptions
+		try {
+			grow();
+		}
+		//Read that this was dangerous but I'm not sure how else to handle it or what exceptions to catch (I know I'm meant to throw an exception not catch, but what case can I test for throwing an exception?)
+		catch (...) {
+			throw std::string("Error");
+		}
+	}
+	backingArray[((front + numItems) % backingArraySize)] = toAdd; 
+	numItems++;
 }
 
 template <class T>
+//Method to remove items from queue
 T ArrayQueue<T>::remove(){
-  
+	T removed = backingArray[front];
+	if(numItems == 0){
+		throw std::string("Error");
+	}
+
+	front = (front + 1) % backingArraySize;
+	numItems--;
+	return removed;	
 }
 
 template <class T>
+//Method to return the number of items in the queue
 unsigned long ArrayQueue<T>::getNumItems(){
-
+	return numItems;
 }
 
 template <class T>
+//Method to resize the queue, doubles the size every time the function is called
 void ArrayQueue<T>::grow(){
-
+	//Creating a new array double the size of the original
+	T* newBackingArray = new T[backingArraySize*2];
+	//Copy the old array's contents to the new array
+	for (unsigned long i = 0; i < numItems; i++)
+		newBackingArray[front + i] = backingArray[(front+i) % backingArraySize];
+	//Double the array size variable
+	backingArraySize = backingArraySize*2;
+	//De-allocate the old array
+	delete[] backingArray;
+	//Set the old array's address location to the new array's location
+	backingArray = newBackingArray;
 }

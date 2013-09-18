@@ -36,9 +36,9 @@ Questions
 8. Working, based on the logic from the book and the fact that I had all successful tests I'm fairly certain this is correct.
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
-
-#### 3. What is one question that confused you about this excercise, or one piece of advice you would share with students next semester?
-
+We could get rid of the front variable and backingArraySize variable, we would only need a variable to hold the number of items in the stack.  We need to keep the methods add, remove, and grow because we still need to be able to push to the stack, pop the stack, and resize the stack as needed. 
+#### 3. What is one question that confused you about this exercise, or one piece of advice you would share with students next semester?
+Most of my confusion from this exercise did not stem from the logic or difficulty of the problems; I spent most of my time figuring out C++ syntax and correcting syntactic issues.  The exceptions were a bit confusing and the grow() method was the most difficult.  As always the best advice is to start the homework early.
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
 
 #### 5. What is the purpose of "templates" in C++?

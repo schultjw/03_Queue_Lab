@@ -46,6 +46,8 @@ backingArraySize=backingArraySize*2;
 for (int i = 0; i < numItems; i++) {
      bArray2[i] = backingArray[(front + i) % backingArraySize];
      }
+   
+   delete[] backingArray;
     backingArray=bArray2;
-    delete[] bArray2;
+    
 }

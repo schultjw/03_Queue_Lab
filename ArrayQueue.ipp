@@ -39,10 +39,10 @@ T ArrayQueue<T>::remove(){
   if(numItems < 0) throw (std::string)"You have no items to remove!";
 
   numItems--;
-  T temp = backingArray[front];
+  int tempInteger = front;
   front = (++front)%backingArraySize;
 
-  return temp;
+  return backingArray[tempInteger];
 }
 
 template <class T>

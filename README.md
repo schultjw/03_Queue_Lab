@@ -29,7 +29,7 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. TODO
+1. This requirement works. I know that remove takes 0(1) time because it takes constant time to run each iteration. Also looking at the number of iterations for each line in the remove method, I see that each takes for the worst case scenario 1. Therefore the running time for the remove function is 0(1).
 2. TODO
 3. This requirement works. I made an if statement in the add function where if numItems == backingArraySize the method grow is called.  In grow the size of the array is doubled.
 4. TODO

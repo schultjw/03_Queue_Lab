@@ -21,7 +21,6 @@ ArrayQueue<T>::ArrayQueue(){
 	backingArray = new T[backingArraySize];
 	numItems = 0;
 	front = 0;
-
 }
 
 template <class T>
@@ -40,7 +39,7 @@ void ArrayQueue<T>::add(T toAdd){
 		try {
 			grow();
 		}
-		//Read that this was dangerous but I'm not sure how else to handle it or what exceptions to catch
+		//Read that this was dangerous but I'm not sure how else to handle it or what exceptions to catch (I know I'm meant to throw an exception not catch, but what case can I test for throwing an exception?)
 		catch (...) {
 			throw std::string("Error");
 		}

@@ -45,9 +45,11 @@ The private variable front is not needed because in a Stack it is LIFO which mea
 Currently have: grow backingArray numItems front backingArraySize
 
 #### 3. What is one question that confused you about this excercise, or one piece of advice you would share with students next semester?
-The constructor confused me.  It took awhile for me to realize how to properly construct the Queue.
+The constructor confused me.  It took awhile for me to realize how to properly construct the backingArray with new.
+One piece of advice that I would share with students next semester is to make sure all your variables are initialized in the constructor.
 
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
+To write the same thing you would write class ArrayQueue : public Queue <T>, where the child class is ArrayQueue and the parent class is Queue.
 
 #### 5. What is the purpose of "templates" in C++?
 

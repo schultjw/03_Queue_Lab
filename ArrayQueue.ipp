@@ -32,18 +32,18 @@ backingArraySize=START_SIZE;
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
-if(numItems>400000)
-  numItems=0;
+//if(numItems>400000)
+ // numItems=0;
 if(numItems==backingArraySize){
   grow();}
-backingArray[front+numItems]=toAdd;
+backingArray[(front+numItems)%backingArraySize] = toAdd;
 numItems++;
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
-  if(numItems=0){
-    throw 20;
+  if(numItems=0||numItems>4000000){
+    throw (std::string)"Tried to remove from an empty array";
   }
    T x= backingArray[front];
    front++;
@@ -58,7 +58,7 @@ unsigned long ArrayQueue<T>::getNumItems(){
 
 template <class T>
 void ArrayQueue<T>::grow(){
-  int* backingArrayTemp= backingArray;
+  T* backingArrayTemp= backingArray;
   backingArraySize=backingArraySize*2;
   backingArray = new T[backingArraySize];
   for(std::size_t i = 0;i<=numItems;i++){

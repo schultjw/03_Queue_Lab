@@ -27,6 +27,9 @@ ArrayQueue<T>::ArrayQueue(){
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
     delete[] backingArray;
+    delete front;
+    delete numItems;
+    delete backingArraySize;
 
 }
 
@@ -38,7 +41,7 @@ void ArrayQueue<T>::add(T toAdd){
         grow();
         }
 
-        backingArray[(front + numItems) % backingArraySize] = toAdd;  //add toAdd at the next 
+        backingArray[((front + numItems) % backingArraySize)] = toAdd;  //add toAdd at the next
         //available index
         
         numItems++;  //record that we have one more item in the array
@@ -48,18 +51,18 @@ void ArrayQueue<T>::add(T toAdd){
 template <class T>
 T ArrayQueue<T>::remove(){
 
-    if (getNumItems == 0) {
-        throw (std::string) "Cannot remove from an empty array";
+    if (numItems == 0) {
+        throw std::string ("Cannot remove from an empty queue");
     }
-
+                             
     T remove = backingArray[front];  //store value to return
-    front = (front +1) % backingArraySize;  //moves front up one index, or returns it to index 0 if
+    front = (front + 1) % backingArraySize;  //moves front up one index, or returns it to index 0 if
         //we have reached the end
     numItems--;  //record that we have one less item in the array
 
     return remove;
   
-}
+    }
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
@@ -72,8 +75,10 @@ template <class T>
 void ArrayQueue<T>::grow(){
     
     T* backingArrayTemp = new T[2 * backingArraySize];
+    if (backingArrayTemp == NULL)
+        throw std::string("No more memory for queue");
     
-    for (i = 0; i < backingArraySize; i++) {
+    for (unsigned long i = 0; i < backingArraySize; i++) {
         backingArrayTemp[i] = backingArray[i];
     }
     

@@ -33,32 +33,31 @@ void ArrayQueue<T>::add(T toAdd){
 // ACTUALLY ADD TO ARRAY!
 	if (numItems == backingArraySize) {
 		grow();
-	//	int end = (front+numItems) % backingArraySize;
-//		backingArray[end] = toAdd;
-//		numItems++;
-		}
-//	else {
+	}
 		int end = (front+numItems) % backingArraySize;
 		backingArray[end] = toAdd;
 		numItems++;
-		//front++;
-//	}
+	//	front = 0;
+		
+
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
 // REMOVE FROM ARRAY!
-//	if (numItems == 0) {
-//		throw (std::string) "Improper!";
+	if (numItems == 0) {
+		throw (std::string) "Improper!";
 		//throw (std::string) "Improper!";
-//	}
+	}
 //	else {
+
 		T x = backingArray[front];
 		front = (front + 1) % backingArraySize;
+
 		numItems--;
-		if (backingArraySize >= 3*numItems) grow();
 		return x;
-//	}
+		
+		
 }
 
 template <class T>
@@ -68,21 +67,13 @@ unsigned long ArrayQueue<T>::getNumItems(){
 
 template <class T>
 void ArrayQueue<T>::grow(){
-	//T* b(std::max(1, 2*numItems));
-	int size = 0;
-	
-	if (1 > 2*numItems){
-		size = 1;
-		}
-	else if (2*numItems > 1) {
-		size = 2*START_SIZE;
-		}
-	T* b = new T[size];
-	//backingArraySize = size;
-	for (int k = 0; (k < numItems); k++){
+	T* b = new T[backingArraySize*2];
+	for (int k = 0; k < numItems; k++){
 		b[k] = backingArray[(front+k) % backingArraySize];
 		}
-	//backingArray = b;
+	backingArray = b;
+	backingArraySize = backingArraySize*2;
+	front = 0;
 
 // not constant time
 // old array too small,  make new array(twice as big) copy old data into array

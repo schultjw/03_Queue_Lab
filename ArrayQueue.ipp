@@ -31,7 +31,7 @@ ArrayQueue<T>::~ArrayQueue() {
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
-	if (numItems + 1 > backingArraySize) {
+	if (numItems == backingArraySize) {
 		grow();
 	}
 	backingArray[(front + numItems) % backingArraySize] = toAdd;

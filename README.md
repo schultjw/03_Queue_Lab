@@ -29,14 +29,14 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. TODO
-2. TODO
-3. TODO
-4. TODO
-5. TODO
-6. TODO
-7. TODO
-8. TODO
+1. Remove does indeed take constant time, because none of the code depends on numItems.  It just executes each line once (or fewer times) no matter how many things are in the queue or array.
+2. Add also occurs in constant time, because, much like remove, each line is executed one or fewer times, no matter how many items are in the queue.
+3. Yep, grow is only called if numItems == backingArraySize, and grow creates a new array twice the size of backingArraySize.
+4. Grow takes O(n) time, because for each item it has to copy it over to the new array.
+5. I believe grow and the destructor operate properly and do not leak memory, but I'm honestly not entirely sure what all goes into a destructor since they are new to me.
+6. Yes, getNumItems takes O(1) time; all it does is return numItems.  While the number itself may grow with n, the time it takes to return does not.
+7. Yes, the exceptions are implemented properly, as far as I can tell.
+8. No linear arrays here, no sir, only circular ones!
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 

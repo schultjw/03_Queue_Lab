@@ -28,14 +28,14 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. TODO
-2. TODO
-3. TODO
-4. TODO
-5. TODO
-6. TODO
-7. TODO
-8. TODO
+1. Working. Remove takes constant time because we are simply removing the last item that was placed into the queue. 
+2. Working. Add takes constant time because we are adding the element to the next avaliable spot in the array which is constant time as we have learned based on the runtime of add.
+3. Working. I used an if statement to test for a full array and if full the array grows to double its size if necessary.
+4. Working. Grow takes linear time because we are simply copying each element and adding it to the new array so the time is proportional to the number of elements in the array. 
+5. Working. By calling delete [] backingArray (as I did) in both the grow and destructor methods there shouldn't be a memory leak.
+6. Working. Because we are using an array we have to keep track of how many items are in that array with a variable. So we simply return the tracking variable which is constant time.
+7. Working. I know for sure my remove exception is working since it was tested with Dr. Brinkman's code. I am pretty sure that my add (which is really in grow) exception is working because Dr. Brinkman helped me to figure out how to do it. 
+8. Working. My array is using the circular fashion because tests 1, 2 and 3 were all passed and based on how my code is written users should be able to tell I am using a circular array. 
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 

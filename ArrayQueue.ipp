@@ -37,7 +37,13 @@ void ArrayQueue<T>::add(T toAdd){
 
 template <class T>
 T ArrayQueue<T>::remove(){
-	return 0;
+	if (numItems == 0) {
+		throw (std::string) "Error: Queue is empty, nothing to remove!";
+	}
+	T removedValue = backingArray[front];
+	front = (front + 1) % backingArraySize;
+	numItems--;
+	return removedValue;
 }
 
 template <class T>

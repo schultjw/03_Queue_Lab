@@ -39,7 +39,7 @@ throw an exception. The add() method takes O(1) constant time.
 3. grow() method works. First of all, create a variable to keep increasing
 the index of front element(by using while loop), and create a new array which will be twice larger than the previous one. Then exactly copy the elements from old array to new array(the algorithm will be the same as remove() method), since queue is FIFO.
 
-4 .No memory leak, once you use delete[], the given arguement in destructor will be called and free the memory. Also set the pointer to be NULL pointer. 
+4. No memory leak, once you use delete[], the given arguement in destructor will be called and free the memory. Also set the pointer to be NULL pointer. 
 
 5. grow takes O(n) times, because the runing time of grow() method depends on
 how many elements in the array that need to be copied.
@@ -125,7 +125,7 @@ Implementing Queue by using circular-array based is very useful.
 
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
 
-class ArrayQueue :: public Queue {};
+class ArrayQueue : public Queue {};
 
 
 #### 5. What is the purpose of "templates" in C++?

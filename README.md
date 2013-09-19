@@ -53,7 +53,6 @@ exception I throw in add() method.
 and then add elements, or call remove() and then add elements.
 
 
-
 ### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 
 The methods to keep:

@@ -27,7 +27,7 @@ Questions
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
 1. Yes, it runs at constant time
-2. If grow worked, it would run at that speed
+2. Yes because it only runs the 1 function
 3. Yes
 4. It would be based on the the number of items so n time would be the correct timing
 5. Yeah it gets rid of any extra 

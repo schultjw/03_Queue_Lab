@@ -79,7 +79,7 @@ void ArrayQueue<T>::grow(){
         throw std::string("No more memory for queue");
     
     for (unsigned long i = 0; i < backingArraySize; i++) {
-        backingArrayTemp[i] = backingArray[i];
+        backingArrayTemp[i+front] = backingArray[(i + front) % backingArraySize];
     }
     
     backingArraySize = backingArraySize * 2;

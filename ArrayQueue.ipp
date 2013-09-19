@@ -2,7 +2,8 @@
 // remove
 #include <string>
 
-int n = 0;
+int n;
+int numItems;
 
 //Syntax note: This uses the pre-processor to create a constant
 // You could also use "const static" to make a constant, as in Java.
@@ -18,6 +19,9 @@ int n = 0;
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
 	front = 0;
+	n=0;
+	numItems=0;
+	backingArraySize=START_SIZE;
 	backingArray = new T[START_SIZE];
 }
 
@@ -30,44 +34,37 @@ template <class T>
 void ArrayQueue<T>::add(T toAdd){
 	if(getNumItems() == backingArraySize)
 		grow();
-	else if(n==backingArraySize)
-		n=0;
 	backingArray[n]=toAdd;
-	n++;
+	numItems++;
+	n=(n+1)%backingArraySize;
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
-	if(getNumItems() == 0)
-		throw std::string("That space in the queue is empty!");
+	if(numItems == 0)
+		throw (std::string)"There are no elements to remove";
 	else{
 		T result = backingArray[front];
-		front++;
+		front=(front+1)%backingArraySize;
+		numItems--;
 		return result;
 	}
 }
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
-	return (front+n)%backingArraySize;
+	return numItems;
 }
 
 template <class T>
 void ArrayQueue<T>::grow(){
 	T* newArray = new T[backingArraySize*2];
-	T* switcher;
-	int i = front;
-	int k = 0;
-	do{
-		newArray[k] = backingArray[i];
-		k++;
-		i++;
-		if(i==backingArraySize)
-			i=0;
-	} while (i != n);
-	n=k;
+	for(unsigned int i = 0; i<backingArraySize; i++){
+		newArray[i]=backingArray[(front+i)%backingArraySize];
+	}
+	n=backingArraySize;
 	front = 0;
-	switcher = backingArray;
+	delete[] backingArray;
 	backingArray = newArray;
-	delete[] switcher;
+	backingArraySize=backingArraySize*2;
 }

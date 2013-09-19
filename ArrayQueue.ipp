@@ -38,16 +38,14 @@ template <class T>
 void ArrayQueue<T>::add(T toAdd){
 
 	// if numItems == backingArraySize, grow the array
-		try{
-		if(numItems == backingArraySize){
+		
+		if(numItems == backingArraySize)
 				grow();
-		}
+		
 		backingArray[(front+numItems)%backingArraySize] = toAdd;
 		numItems++;
-		}
-		catch(std::string){
-			throw (std::string) "Unable to add input item. Your computer may out of memory ";
-		}
+		
+		
 }
 
 
@@ -74,6 +72,8 @@ unsigned long ArrayQueue<T>::getNumItems(){
 template <class T>
 void ArrayQueue<T>::grow(){
 	T* newBackingArray = new T[backingArraySize*2];
+	if(newBackingArray == NULL)
+		throw (std::string) "Unable to add input item. Your computer may out of memory ";
 	for(unsigned int i =0; i<backingArraySize; i++){
 		newBackingArray[front+i] = backingArray[(front + i) % backingArraySize];
 	}

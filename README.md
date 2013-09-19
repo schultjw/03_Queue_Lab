@@ -26,13 +26,13 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. 
-2. 
+1. This takes O(1) time because it constantly does the same thing.
+2. This also takes O(1) time by simply changing an array point value, unless grow is called.
 3. The if statement "if (numItems == backingArraySize)grow();" makes sure that grow is only called when we want to add to a full array, and grow doubles the array size.
 4. Grow takes O(n) time because it doubles based on the numItems variable.
-5. 
-6. 
-7. 
+5. Both the grow function and the destructor will delete the array by using delete[].
+6. getNumItems is O(1) time because it just returns a single variable.
+7. Both add and remove throw an exception if needed.
 8. This is a circular array, as the 'front' just circles from the back to the front of the array.
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.

@@ -26,16 +26,35 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. TODO
-2. TODO
-3. TODO
-4. TODO
-5. TODO
-6. TODO
-7. TODO
-8. TODO
+1. remove() method works. First of all, check if it does exist elements in the
+array, if it does, remove the front element. Then increase the index of front 
+element as one. And then if you call remove() again, it will repeat the same 
+way to do so. If there is no element in the array, throw an exception. The running time of remove() method is O(1).
 
-#### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
+2. add() method works. First of all, check if the array is full. If it is full, then check if backingArray is vaild(I am not sure which exception I need to 
+throw here, I am thinking may be the unsigned long int backingArraySize could
+be overflow). If backingArray is valid, then call grow() method, otherwise 
+throw an exception. The add() method takes O(1) constant time.
+
+3. grow() method works. First of all, create a variable to keep increasing
+the index of front element(by using while loop), and create a new array which will be twice larger than the previous one. Then exactly copy the elements from old array to new array(the algorithm will be the same as remove() method), since queue is FIFO.
+
+4 .No memory leak, once you use delete[], the given arguement in destructor will be called and free the memory. Also set the pointer to be NULL pointer. 
+
+5. grow takes O(n) times, because the runing time of grow() method depends on
+how many elements in the array that need to be copied.
+
+6. getNumItems() takes O(1) time because it simply just returns a value.
+
+7. remove throw an exception appropriately, but I am not sure about the 
+exception I throw in add() method.
+
+8. Array is circular. When the array is full, you could either choose grow()
+and then add elements, or call remove() and then add elements.
+
+
+
+### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 
 The methods to keep:
 

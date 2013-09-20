@@ -41,15 +41,23 @@ grow();
 }
 backingArray[count] = toAdd;
 numItems++;
+//std::cout << count << std::endl;
 count = (count + 1) % backingArraySize;
 
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
-
-  throw (std::string)"This is to cast something into a string";
-  return backingArray[0];
+  if(numItems == 0){
+  throw (std::string)"The queue is empty";
+  }
+  else{
+  numItems--;
+  T afterRemove = backingArray[front];
+  front = (front+1) % backingArraySize;
+  return afterRemove;
+  }
+  
 }
 
 template <class T>

@@ -31,7 +31,7 @@ backingArraySize = START_SIZE;
 
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
- delete& backingArray;
+ delete[] backingArray;
 }
 
 template <class T>
@@ -70,13 +70,13 @@ void ArrayQueue<T>::grow(){
  T* newArray = new T[backingArraySize*2];
 //Twice as big as the original
 
-for(unsigned int i = 0; i < backingArraySize; i++){
+for(unsigned int i = 0; i < numItems; i++){
  newArray[i] = backingArray[(front+i)%backingArraySize];
 }
-count = backingArraySize;
+count = numItems;
 front = 0;
 
-/*Noting that the logic below I got from reading Nick Contini code's (with his permission)
+/*Noting that the logic below I got from reading Nick Contini's code (with his permission)
 I did not come up with it on my own but I learn from it. */
 
 delete[] backingArray;

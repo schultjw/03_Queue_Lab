@@ -33,7 +33,7 @@ Questions
 5. It works
 6. It works
 7. Done
-8. I've gotten all of the command prompt
+8. I've gotten the program to work, and I believe that computing time is O(1) but I am uncertain on how to check them.
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 I think that end would be deletable because it stacks up, keep others? Unsure.

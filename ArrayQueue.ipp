@@ -73,13 +73,22 @@ unsigned long ArrayQueue<T>::getNumItems(){
 template <class T>
 void ArrayQueue<T>::grow(){
  T* newArray = new T[backingArraySize*2];
-//Twice as big as the original
+/*Twice as big as the original*/
 
-for(unsigned int i = 0; i < numItems; i++{
+for(unsigned int i = 0; i < numItems; i++){
  newArray[i] = backingArray[front];
  front++;
 }
 count = numItems;
 front = 0;
 
+//Below idea is not orignial content (copied from "db4soundman") edited to fit my code.
+
+delete[] backingArray;
+backingArray = new T[backingArraySize];
+   for(int i = 0; i<=numItems; i++){
+        backingArray[i] = newArray[i];
+   }
+//End copy (Above content)
+delete[] newArray;
 }

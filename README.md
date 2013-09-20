@@ -26,23 +26,29 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. TODO
-2. TODO
+1. It works
+2  It works
 3. TODO
 4. TODO
 5. TODO
 6. TODO
-7. TODO
+7. Done
 8. TODO
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
+I think that end would be deletable because it stacks up, keep others? Unsure.
 
 #### 3. What is one question that confused you about this excercise, or one piece of advice you would share with students next semester?
+The grow function really puzzles me, Go to office hours!!
 
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
+queue::ArrayQueue
 
 #### 5. What is the purpose of "templates" in C++?
+When you arn't exactly sure what type of data you'll work on but you have a way of treating it
 
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?
+"int* arrayName = new int[10];"
 
 #### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?
+To get rid of classes that are no longer in used. Java has a garbage collector that does this for you.

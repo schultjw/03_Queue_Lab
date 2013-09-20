@@ -1,6 +1,12 @@
 //You will need this so you can make a string to throw in
 // remove
 #include <string>
+ 
+//Instance Variables
+int count;
+int front;
+int numItems;
+int backingArraySize;
 
 //Syntax note: This uses the pre-processor to create a constant
 // You could also use "const static" to make a constant, as in Java.
@@ -33,8 +39,9 @@ void ArrayQueue<T>::add(T toAdd){
 if(getNumItems() == backingArraySize){
 grow();
 }
-else if(count == backingAraySize){
+else if(count == backingArraySize){
 count = 0;
+backingArray[count] = toAdd;
 
 }
 
@@ -48,7 +55,7 @@ T ArrayQueue<T>::remove(){
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
- return numItem;
+ return numItems;
 }
 
 template <class T>

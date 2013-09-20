@@ -42,13 +42,17 @@ grow();
 else if(count == backingArraySize){
 count = 0;
 backingArray[count] = toAdd;
-
+count++;
+numItems++;
+backingArraySize++;
 }
 
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
+
+
   throw (std::string)"This is to cast something into a string";
   return backingArray[0];
 }

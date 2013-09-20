@@ -15,6 +15,11 @@
 // ArrayQueue<T> class.
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
+count = 0;
+front = 0;
+numItems = 0;
+backingArray = new T [START_SIZE];
+backingArraySize = START_SIZE;
 
 }
 
@@ -25,6 +30,13 @@ ArrayQueue<T>::~ArrayQueue() {
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
+if(getNumItems() == backingArraySize){
+grow();
+}
+else if(count == backingAraySize){
+count = 0;
+
+}
 
 }
 
@@ -36,7 +48,7 @@ T ArrayQueue<T>::remove(){
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
- return numItems;
+ return numItem;
 }
 
 template <class T>

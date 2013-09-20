@@ -31,12 +31,7 @@ backingArraySize = START_SIZE;
 
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
- delete &count;
- delete &front;
- delete &front;
- delete &numItems;
- delete &backingArraySize;
- delete &backingArray;
+ delete& backingArray;
 }
 
 template <class T>
@@ -73,22 +68,19 @@ unsigned long ArrayQueue<T>::getNumItems(){
 template <class T>
 void ArrayQueue<T>::grow(){
  T* newArray = new T[backingArraySize*2];
-/*Twice as big as the original*/
+//Twice as big as the original
 
-for(unsigned int i = 0; i < numItems; i++){
- newArray[i] = backingArray[front];
- front++;
+for(unsigned int i = 0; i < backingArraySize; i++){
+ newArray[i] = backingArray[(front+i)%backingArraySize];
 }
-count = numItems;
+count = backingArraySize;
 front = 0;
 
-//Below idea is not orignial content (copied from "db4soundman") edited to fit my code.
+/*Noting that the logic below I got from reading Nick Contini code's (with his permission)
+I did not come up with it on my own but I learn from it. */
 
 delete[] backingArray;
-backingArray = new T[backingArraySize];
-   for(int i = 0; i<=numItems; i++){
-        backingArray[i] = newArray[i];
-   }
-//End copy (Above content)
-delete[] newArray;
+backingArray = newArray;
+backingArraySize = (backingArraySize*2);
+
 }

@@ -40,10 +40,8 @@ if(getNumItems() == backingArraySize){
 grow();
 }
 backingArray[count] = toAdd;
-count++;
 numItems++;
 count = (count + 1) % backingArraySize;
-}
 
 }
 

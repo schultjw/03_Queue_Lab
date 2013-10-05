@@ -50,3 +50,4 @@ int* array;
 array = new int[10];
 
 #### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?
+to deallocate memory. Java has a garbage collector.

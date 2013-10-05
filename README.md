@@ -38,11 +38,13 @@ Questions
 8. done
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
+we would only get rid of the variable 'front' because numItems is the end which is the only thing we need to keep track of for a stack (for the add and remove methods). of course the add and remove functions would be altered, but they would still be kept.
 
 #### 3. What is one question that confused you about this excercise, or one piece of advice you would share with students next semester?
+Because we created the remove function, we might as well use it in the destructor. 
 
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
-
+#includes.
 #### 5. What is the purpose of "templates" in C++?
 The purpose of templates is that we can make the function that operates with generic types. Then we don't have to repeat the code for every type.
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?

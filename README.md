@@ -28,14 +28,14 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. TODO
-2. TODO
-3. TODO
-4. TODO
-5. TODO
-6. TODO
-7. TODO
-8. TODO
+1. done
+2. done
+3. done
+4. done
+5. done
+6. done
+7. done
+8. done
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 
@@ -44,7 +44,9 @@ Questions
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
 
 #### 5. What is the purpose of "templates" in C++?
-
+The purpose of templates is that we can make the function that operates with generic types. Then we don't have to repeat the code for every type.
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?
+int* array;
+array = new int[10];
 
 #### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?

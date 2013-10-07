@@ -47,6 +47,6 @@ You use #include "extendedClass.h" in the child class. This allows the child cla
 #### 5. What is the purpose of "templates" in C++?
 Templetes in C++ allow for containers to be created independent of a specific data type. This allows the template to be versitle, and be used with any data type. Without using a template, the container would only work for a specific data type, which is nowhere close to as useful as a container defined using a template.
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?
-You need to declare an int pointer, by using int*. This gives a pointer that points to an integer value. Then, you declare that it is an array using new dataType[numberOfSlots]. 
+You need to declare an int pointer, by using int*. This gives a pointer that points to an integer value. Then, you declare that it is an array using the statement int* variableName = new dataType[numberOfSlots]. 
 #### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?
 The class destructor allows the program to reallocate a specific part of memory in C++. It is important to destruct the class to avoid a memory leak, which is caused by a program using too much memory, and the only way to prevent this is to delete old instances of classes. Java does not need the destructor because it utilizes a garbage collector, that automatically deletes instances of variables after they are not needed.

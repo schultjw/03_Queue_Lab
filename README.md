@@ -31,6 +31,9 @@ Each line of the code, except the function call of grow() method, in the add() m
 4. grow takes O(n) time. 
 In the grow() method, each line of code, except the for loop section, takes constan time. However, the for loop will loop through the backingArraySize. This means that the running time of this for loop depends on the input size, in this case, the value of backingArraySize. This line of code "for(unsigned int i =0; i<backingArraySize; i++)" will take constant time per iteration, and there will be n(n is the value of backingArraySize) interations. The line of code inside the for loop will also take constant time per iteration, and there will be n iterations. As a result, the grow() method has a running time of O(n), where n is the value of backingArraySize. 
 
+6. getNumItems is O(1) time
+The one line of code in the getNumItems() method returns a value. This line of code takes constant time, and thus, the running time of getNumItems() is O(1). 
+
 
 Reading
 =======

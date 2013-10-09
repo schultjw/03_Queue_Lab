@@ -12,22 +12,25 @@ Requirements
 ------------
 
 1. remove takes O(1) time. 
-
-Each line of code, except function call of throw() method, in the remove() method takes constant time. The running time of throw() function call is unknown to me. Assuming that the function call to throw() takes constant time, then the remove() method will will have a running time of O(1). 
-
 2. add takes O(1) time, unless it calls grow (in that case O(n) is okay). 
-
-Each line of the code, except the function call of grow() method, in the add() method takes constant time. The running time of grow() is O(n). Thus, the running time of add() method is O(1) if it does not call the grow() method, and the running time of add() method is O(n) if it call the grow() method.  
-
 3. grow is only called if the number of items == backingArraySize, and the size of the array is doubled during grow
-
 4. grow takes O(n) time. 
-
-In the grow() method, each line of code, except the for loop section, takes constan time. However, the for loop will loop through the backingArraySize. This means that the running time of this for loop depends on the input size, in this case, the value of backingArraySize. This line of code "for(unsigned int i =0; i<backingArraySize; i++)" will take constant time per iteration, and there will be n(n is the value of backingArraySize) interations. The line of code inside the for loop will also take constant time per iteration, and there will be n iterations. As a result, the grow() method has a running time of O(n), where n is the value of backingArraySize. 
 5. Do not leak memory (make sure grow and the destructor do the right thing)
 6. getNumItems is O(1) time
 7. add and remove throw excpetions as appropriate
 8. You must use the array in a circular fashion. If you don't do this you probably won't be able to get #1, #2 and #3 to all be true.
+
+Running Time Analysis
+=======================
+1. remove takes O(1) time. 
+Each line of code, except function call of throw() method, in the remove() method takes constant time. The running time of throw() function call is unknown to me. Assuming that the function call to throw() takes constant time, then the remove() method will will have a running time of O(1). 
+
+2. add takes O(1) time, unless it calls grow (in that case O(n) is okay). 
+Each line of the code, except the function call of grow() method, in the add() method takes constant time. The running time of grow() is O(n). Thus, the running time of add() method is O(1) if it does not call the grow() method, and the running time of add() method is O(n) if it call the grow() method.  
+
+4. grow takes O(n) time. 
+In the grow() method, each line of code, except the for loop section, takes constan time. However, the for loop will loop through the backingArraySize. This means that the running time of this for loop depends on the input size, in this case, the value of backingArraySize. This line of code "for(unsigned int i =0; i<backingArraySize; i++)" will take constant time per iteration, and there will be n(n is the value of backingArraySize) interations. The line of code inside the for loop will also take constant time per iteration, and there will be n iterations. As a result, the grow() method has a running time of O(n), where n is the value of backingArraySize. 
+
 
 Reading
 =======

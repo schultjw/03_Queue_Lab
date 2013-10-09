@@ -29,7 +29,7 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. remove takes O(1) time. Each line of code in the function remove() take constant time, and the running time does not depend on the input size.
+1. remove takes O(1) time. Each line of code in the function remove(), except the function call on the throw method, takes constant time. Ignoreand the running time does not depend on the input size.
 2. add takes O(1) time, unless it calles grow  (in that case it takes O(n) time). If numItems!=backingArraySize, then add new elements at the back of the array (this takes constant time), and increase the number of items in the array (this takes constant time). 
 3. grow is only called if numItems == backingArraySize, and the size of the array is doubled during grow. 
 4. grow takes O(n) time. A for loop is required to copy every element in the old array to the new one, so if there are n elements in the first array, then it will have n iterations. 

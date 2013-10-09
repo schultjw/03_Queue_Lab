@@ -11,8 +11,8 @@ Note: When you create your project, do NOT add ArrayQueue.ipp to the list of sou
 Requirements
 ------------
 
-1. remove takes O(1) time. Each line of code in the remove() method, except the throw() function call, takes constant time. If the function call to throw() takes constant time, then the remove() method will will have a running time of O(1). 
-2. add takes O(1) time, unless it calls grow (in that case O(n) is okay)
+1. remove takes O(1) time. Each line of code, except function call of throw() method, in the remove() method takes constant time. The running time of throw() function call is unknown to me. Assuming that the function call to throw() takes constant time, then the remove() method will will have a running time of O(1). 
+2. add takes O(1) time, unless it calls grow (in that case O(n) is okay). Each line of the code, except the function call of grow() method, in the add() method takes constant time. The running time of grow() is O(n). Thus, the running time of add() method is O(1) if it does not call the grow() method, and the running time of add() method is O(n) if it call the grow() method.  
 3. grow is only called if the number of items == backingArraySize, and the size of the array is doubled during grow
 4. grow takes O(n) time
 5. Do not leak memory (make sure grow and the destructor do the right thing)

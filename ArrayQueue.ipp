@@ -24,9 +24,6 @@ ArrayQueue<T>::ArrayQueue(){
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
 	delete[] backingArray;
-	delete front;
-	delete numItems;
-	delete backingArraySize;
 }
 
 template <class T>

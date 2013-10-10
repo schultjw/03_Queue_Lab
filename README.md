@@ -43,7 +43,7 @@ The grow() method would have to be removed or reimplemented. If you use the same
 #### 3. What is one question that confused you about this excercise, or one piece of advice you would share with students next semester?
 I would tell the students next semester to really be careful with your thinking before you code. I jumped in to coding, and I was not really sure what I was doing. I was able to figure it out after class on Monday, but I made my life much harder by acting before thinking. I also did not really think through my intial implementations of the methods, which caused issues with add() and remove(). Then, really pay attention that you change the instance variables, I forgot to reset variables or increment them in various places suprisingly often.
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
-You use #include "extendedClass.h" in the child class. This allows the child class to refrence any of the methods declared in the "extendedClass.h" header, and access the parent class' public methods and variables.
+The ":" symbol denotes inheritance. In the example given, in C++ it would be written class ArrayQueue: desiredVariableScope Queue
 #### 5. What is the purpose of "templates" in C++?
 Templetes in C++ allow for containers to be created independent of a specific data type. This allows the template to be versitle, and be used with any data type. Without using a template, the container would only work for a specific data type, which is nowhere close to as useful as a container defined using a template.
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?

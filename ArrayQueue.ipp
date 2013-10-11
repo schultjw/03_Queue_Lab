@@ -23,19 +23,28 @@ ArrayQueue<T>::ArrayQueue(){ //make sure variable names match!
 
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
-
-}
+	delete[] backingArray;
+}//end destructor
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
-
-}
+	if(numItems==backingArraySize)
+        grow();
+    
+    backingArray[(front+numItems)%backingArraySize] = toAdd; //formula from class
+    numItems += 1;
+}//end add
 
 template <class T>
 T ArrayQueue<T>::remove(){
-  throw (std::string) "Moo moooooooooo!"; 
-  return backingArray[0];
-}
+	if(numItems==0)
+		throw (std::string)"No elements remain to be deleted.";
+
+	T thingToRemove = backingArray[front];
+	front ++;
+	if (front>=backingArraySize){
+		front = 0;
+}//end remove
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){

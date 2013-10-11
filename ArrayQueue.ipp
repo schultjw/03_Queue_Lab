@@ -14,9 +14,12 @@
 // tell the compiler that this ArrayQueue() method belongs to the
 // ArrayQueue<T> class.
 template <class T>
-ArrayQueue<T>::ArrayQueue(){
-
-}
+ArrayQueue<T>::ArrayQueue(){ //make sure variable names match!
+	backingArraySize = START_SIZE;
+	backingArray = new T [backingArraySize];
+    front = 0;
+    numItems = 0;
+}//end constructor
 
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {

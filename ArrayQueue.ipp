@@ -64,4 +64,4 @@ void ArrayQueue<T>::grow(){
 	delete[] backingArray;
 	backingArray = replacement;
 	backingArraySize *= 2;
-}
+}//end grow

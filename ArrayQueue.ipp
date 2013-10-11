@@ -41,9 +41,8 @@ T ArrayQueue<T>::remove(){
 		throw (std::string)"No elements remain to be deleted.";
 
 	T thingToRemove = backingArray[front];
-	front ++;
-	if (front>=backingArraySize)
-		front = 0;
+	front = (front+1) % backingArraySize;
+	numItems -= 1;
 }//end remove
 
 template <class T>

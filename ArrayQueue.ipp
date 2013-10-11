@@ -42,7 +42,7 @@ T ArrayQueue<T>::remove(){
 
 	T thingToRemove = backingArray[front];
 	front ++;
-	if (front>=backingArraySize){
+	if (front>=backingArraySize)
 		front = 0;
 }//end remove
 

@@ -38,19 +38,30 @@ void ArrayQueue<T>::add(T toAdd){
 template <class T>
 T ArrayQueue<T>::remove(){
 	if(numItems==0)
-		throw (std::string)"No elements remain to be deleted.";
+		throw (std::string)"No elements remain to be removed.";
 
-	T thingToRemove = backingArray[front];
+	T removed = backingArray[front];
 	front = (front+1) % backingArraySize;
 	numItems -= 1;
+	return removed;
 }//end remove
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
-return numItems;
-}
+	return numItems;
+}//end getNumItems
 
 template <class T>
 void ArrayQueue<T>::grow(){
+	T* replacement = new T[backingArraySize*2];
+	if (replacement==NULL)
+	  throw std::string("You have run out of memory, sorry.");
 
+	for (unsigned long i=0; i<numItems; i++)
+	  replacement[i] = backingArray[(i+front)%backingArraySize];
+
+	front = 0;
+	delete[] backingArray;
+	backingArray = replacement;
+	backingArraySize *= 2;
 }

@@ -2,12 +2,6 @@
 // remove
 #include <string>
  
-//Instance Variables
-int count;
-int front;
-int numItems;
-int backingArraySize;
-
 //Syntax note: This uses the pre-processor to create a constant
 // You could also use "const static" to make a constant, as in Java.
 // Notice, however, that START_SIZE is NOT a variable! Instead, any
@@ -21,7 +15,7 @@ int backingArraySize;
 // ArrayQueue<T> class.
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
-count = 0;
+numItems = 0;
 front = 0;
 numItems = 0;
 backingArray = new T [START_SIZE];
@@ -39,10 +33,10 @@ void ArrayQueue<T>::add(T toAdd){
 if(getNumItems() == backingArraySize){
 grow();
 }
-backingArray[count] = toAdd;
+backingArray[numItems] = toAdd;
 numItems++;
-//std::cout << count << std::endl;
-count = (count + 1) % backingArraySize;
+//std::cout << numItems << std::endl;
+numItems = (numItems + 1) % backingArraySize;
 
 }
 
@@ -73,7 +67,7 @@ void ArrayQueue<T>::grow(){
 for(unsigned int i = 0; i < numItems; i++){
  newArray[i] = backingArray[(front+i)%backingArraySize];
 }
-count = numItems;
+numItems = numItems;
 front = 0;
 
 /*Noting that the logic below I got from reading Nick Contini's code (with his permission)

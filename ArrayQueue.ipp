@@ -54,12 +54,13 @@ return numItems;
 template <class T>
 void ArrayQueue<T>::grow(){
 T* bArray2= new T[backingArraySize *2];
-backingArraySize=backingArraySize*2;
+
 for (int i = 0; i < backingArraySize; i++) {
      bArray2[i] = backingArray[(front + i) % backingArraySize];
      }
    
+   backingArraySize=backingArraySize*2;
    delete[] backingArray;
     backingArray=bArray2;
-    
+    front=0;
 }

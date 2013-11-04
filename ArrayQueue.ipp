@@ -17,6 +17,7 @@ template <class T>
 ArrayQueue<T>::ArrayQueue(){
 front=0;
 backingArray= new T[START_SIZE];
+numItems=0;
 }
 
 template <class T>

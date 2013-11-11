@@ -75,10 +75,14 @@ void ArrayQueue<T>::grow(){
 	if(newBackingArray == NULL)
 		throw (std::string) "Unable to add input item. Your computer may out of memory ";
 	for(unsigned int i =0; i<backingArraySize; i++){
-		newBackingArray[front+i] = backingArray[(front + i) % backingArraySize];
+		newBackingArray[i] = backingArray[(front + i) % backingArraySize];
 	}
-	backingArraySize = backingArraySize*2;
+
+	// set the front back to 0
+	front = 0;
+
 	delete[] backingArray;
 	backingArray = newBackingArray;
+	backingArraySize = backingArraySize*2;
 	
 }

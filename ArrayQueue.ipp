@@ -17,6 +17,7 @@ template <class T>
 ArrayQueue<T>::ArrayQueue(){
 front=0;
 backingArray= new T[START_SIZE];
+numItems=0;
 }
 
 template <class T>
@@ -24,15 +25,16 @@ ArrayQueue<T>::~ArrayQueue() {
 delete[] backingArray;
 }
 
+// from book
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
  if (numItems == backingArraySize)
    grow();
    
       backingArray[((front + numItems) % backingArraySize)] = toAdd; 
-numItems++;
+     numItems++;
 }
-
+// from book
 template <class T>
 T ArrayQueue<T>::remove(){
     if(numItems==0)
@@ -50,16 +52,18 @@ template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
 return numItems;
 }
-
+//from book
 template <class T>
 void ArrayQueue<T>::grow(){
 T* bArray2= new T[backingArraySize *2];
+
 
 for (int i = 0; i < backingArraySize; i++) {
      bArray2[i] = backingArray[(front + i) % backingArraySize];
      }
    
    backingArraySize=backingArraySize*2;
+   
    delete[] backingArray;
     backingArray=bArray2;
     front=0;

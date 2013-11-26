@@ -70,12 +70,6 @@ void ArrayQueue<T>::grow(){
   
    front = 0;
    backingArraySize *=2;
-   delete[] backingArray;
-
-   backingArray = new T[backingArraySize];
-   for(int i = 0; i<=numItems; i++){
-        backingArray[i] = largerArray[i];
-   }
-   delete[] largerArray;
+   backingArray = largerArray;
 
 }

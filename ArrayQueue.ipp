@@ -27,19 +27,21 @@ template <class T>
 ArrayQueue<T>::~ArrayQueue() {
   
   delete[] backingArray;
-  front = 0;
-  numItems = 0;
 
 }
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
+  
+
 
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
   
+
+
 }
 
 template <class T>
@@ -54,11 +56,11 @@ void ArrayQueue<T>::grow(){
 
   int updatedSize = 2*backingArraySize;
   T* apdatedArray = new T[updatedSize];
-  T* originalArray = backingArray;
   for (int index = 0; index < backingArraySize; index++)
-    updatedArray[index] = originalArray[index];
+    updatedArray[index] = backingArray[index];
+  delete[] backingArray;
+  front = 0;
   backingArraySize = updatedSize;
   backingArray = updatedArray;
-  delete[] originalArray;
 
 }

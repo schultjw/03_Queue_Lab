@@ -16,10 +16,19 @@
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
 
+  backingArraySize = START_SIZE;
+  backingArray = new T[backingArraySize];
+  front = 0;
+  numItems = 0;
+
 }
 
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
+  
+  delete[] backingArray;
+  front = 0;
+  numItems = 0;
 
 }
 
@@ -35,10 +44,21 @@ T ArrayQueue<T>::remove(){
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
+  
+  return numItems;
 
 }
 
 template <class T>
 void ArrayQueue<T>::grow(){
+
+  int updatedSize = 2*backingArraySize;
+  T* apdatedArray = new T[updatedSize];
+  T* originalArray = backingArray;
+  for (int index = 0; index < backingArraySize; index++)
+    updatedArray[index] = originalArray[index];
+  backingArraySize = updatedSize;
+  backingArray = updatedArray;
+  delete[] originalArray;
 
 }

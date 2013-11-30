@@ -33,7 +33,11 @@ ArrayQueue<T>::~ArrayQueue() {
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
   
-
+  if (numItems == backingArraySize)
+    grow();
+  int addLocation = (front+numItems)%backingArraySize;
+  backingArray[addLocation] = toAdd;
+  numItems++;
 
 }
 

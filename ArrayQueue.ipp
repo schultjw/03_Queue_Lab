@@ -44,7 +44,12 @@ void ArrayQueue<T>::add(T toAdd){
 template <class T>
 T ArrayQueue<T>::remove(){
   
-
+  if (numItems == 0)
+    throw (std::string) "Error: no items in array to delete.  Please add an item before attempting to delete anything.";
+  T itemToDelete = backingArray[front];
+  front = (front+1)%backingArraySize;
+  numItems--;
+  return itemToDelete;
 
 }
 

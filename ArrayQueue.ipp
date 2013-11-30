@@ -64,11 +64,11 @@ template <class T>
 void ArrayQueue<T>::grow(){
 
   int updatedSize = 2*backingArraySize;
-  T* apdatedArray = new T[updatedSize];
+  T* updatedArray = new T[updatedSize];
   for (int index = 0; index < backingArraySize; index++)
-    updatedArray[index] = backingArray[index];
-  delete[] backingArray;
+    updatedArray[index] = backingArray[(front+index)%backingArraySize];
   front = 0;
+  delete[] backingArray;
   backingArraySize = updatedSize;
   backingArray = updatedArray;
 

@@ -38,11 +38,13 @@ void ArrayQueue<T>::add(T toAdd){
 template <class T>
 T ArrayQueue<T>::remove(){
   if(numItems == 0){
-	throw (std::string) "No item to remove."
+	throw (std::string) "No item to remove.";
   }
   else{
+    T temp = backingArray[front];
     front = (front + 1) % backingArraySize;
 	numItems--;
+	return temp;
   } 
 }
 

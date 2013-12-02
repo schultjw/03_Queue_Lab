@@ -15,12 +15,15 @@
 // ArrayQueue<T> class.
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
-
+	backingArray = new T[START_SIZE];
+	front = 0;
+	numItems = 0; 
+	backingArraySize = 10;
 }
 
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
-
+	delete[] backingArray;
 }
 
 template <class T>

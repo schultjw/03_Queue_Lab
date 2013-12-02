@@ -1,3 +1,6 @@
+//Methods derived from class lecture and textbook material
+
+
 //You will need this so you can make a string to throw in
 // remove
 #include <string>

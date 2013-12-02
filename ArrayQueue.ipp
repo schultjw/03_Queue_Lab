@@ -41,10 +41,10 @@ T ArrayQueue<T>::remove(){
 	throw (std::string) "No item to remove.";
   }
   else{
-    T temp = backingArray[front];
+    T removal = backingArray[front];
     front = (front + 1) % backingArraySize;
 	numItems--;
-	return temp;
+	return removal;
   } 
 }
 
@@ -55,5 +55,12 @@ unsigned long ArrayQueue<T>::getNumItems(){
 
 template <class T>
 void ArrayQueue<T>::grow(){
-
+	T* newArr = new T[2*backingArraySize];
+	T* delptr = backingArray;
+	backingArray = newArr;
+	for(int i = 0; i < backingArraySize; i++){
+		backingArray[i] = delptr[i];
+	}
+	backingArraySize = backingArraySize * 2;
+	delete[] delptr;
 }

@@ -48,15 +48,16 @@ One piece of advice that I would share with students next semester is to pay spe
 
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
 
-
+In C++ you would write "class ArrayQueue : public Queue <T>".
 
 #### 5. What is the purpose of "templates" in C++?
 
-
+The purpose of "templates" in C++ is to essentially make code more reusable, as they are extremely useful when you have to perform tasks that are pretty much identical, but must be done with multiple different types of variables.
 
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?
 
-
+To dynamically allocate an array of 10 ints in C++, you would simply write "int* array = new int[10];". You could also write "int[] array = new int[10];". Then to delete the array, you would just write "delete[] array;".
 
 #### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?
 
+A class destructor in C++ is used to delete information from memory when it is no longer needed for the purposes of the program being run. These are not needed in Java because Java has a garbage collector which does the same thing as a destructor, only it does it automatically.

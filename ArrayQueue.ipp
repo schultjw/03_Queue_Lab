@@ -21,26 +21,26 @@ ArrayQueue<T>::ArrayQueue()
 
         //Initizlize the size of array as 10.
         backingArraySize = START_SIZE;
-    
-	//Allocate the memory.
-	backingArray = new T[backingArraySize];
 
-	//The front index of element in array.
-	front = 0;
+        //Allocate the memory.
+        backingArray = new T[backingArraySize];
 
-	//Record the number of elements in the array.
-	numItems = 0;
+        //The front index of element in array.
+        front = 0;
+
+        //Record the number of elements in the array.
+        numItems = 0;
 }
 
 template <class T>
-ArrayQueue<T>::~ArrayQueue() 
+ArrayQueue<T>::~ArrayQueue()
 {
-    
-	//Free the memory.
-	delete [] backingArray;
 
-	//Set backingArray to be NULL.
-	backingArray = NULL;
+        //Free the memory.
+        delete [] backingArray;
+
+        //Set backingArray to be NULL.
+        backingArray = NULL;
 }
 
 template <class T>
@@ -52,48 +52,54 @@ void ArrayQueue<T>::add(T toAdd)
   if(numItems + 1 > backingArraySize)
 
      {
-     
+
      if(backingArray == NULL)
      {
-        
+
         throw std::string("Error! Something bad happens in array");
-     
+
      }
-     
-     
-	   grow();
-     
+
+
+           grow();
+
      }
-	
-  backingArray[ ( front + numItems ) % backingArraySize ] = toAdd;
+
+  //The reason to do "front + numItems" here is to let the array be circular.
+  //For instance, you add an element at index 0 and then delete it, the "front"
+  //will be 1(check remove method), then you add an element at index 1 and delete it
+  //the "front" will be 2...and so on. If the size of array is 10 and you add an element
+  //at index 9 and delete it, the "front" will be 0(see remove method), which means you start to add elements
+  //at the first index of array. Therefore it is circular.
+  backingArray[ ( front + numItems) % backingArraySize ] = toAdd;
 
   //After adding one element in the array, increase the number of element as one.
-	 numItems++;
+  numItems++;
 }
 
 template <class T>
 T ArrayQueue<T>::remove()
 {
-   
+
    //Create a object which will hold a element that needs to be removed.
    T rm;
 
   //Throw a exception if no element in the array.
   if(numItems == 0)
       {
-	  throw std::string("Error! There is no element is the queue.");
+          throw std::string("Error! There is no element is the queue.");
       }
 
-
-  //According to the FIFO policy, store the front element in the array.
   rm = backingArray[front];
 
 
-  
+
   //After delete a element, increase the index of front element as one.
+  //Therefore, the array will be circular and you don't need to resize
+  //the array as long as you add an element in an array and then delete it.
+  //For instance, the array size is 10 and after you remove an element in index 9,
+  //then the "front" will be 0.
   front = ( (front+1) % (backingArraySize) );
-
-
 
   //Decrease the number of element in the array.
   numItems--;
@@ -105,41 +111,44 @@ T ArrayQueue<T>::remove()
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
 
-	return numItems;
+        return numItems;
 
 }
 
 template <class T>
 void ArrayQueue<T>::grow()
 {
- 
-   
+
+
     //To increase the front index of array.
     int count = 0;
 
     T *newArray = new T[2 * backingArraySize];
 
-	while(count<numItems){
+        while(count<numItems){
 
-                //Exactly copy the elements from old array to new array.
-		newArray[ ( front+count % backingArraySize )] = backingArray[ ( front+count ) % backingArraySize ];
+                /*
+                  The reason to do "front+count" is because the "front"
+                  is not always be 0. For example, the original size of
+                  array is 10. You can add "1" and delete "1", add "2" and delete "2",
+                  add "3" and delete "3". After this, you keep adding elements 1000 times without
+                  removing. In this case the "front" is 3.
 
-		count++;
-	}
+                  The reason to do "( front+count ) % backingArraySize" is because
+                  the backingArraySize will change after "grow()". To avoid array being out
+                  of bound.
+                */
+                newArray[ (front + count) ] = backingArray[ ( front+count ) % backingArraySize ];
 
-	backingArraySize = 2 * backingArraySize;
-	
-	
-	//Copy the array.
-	backingArray = newArray;
-	
-	//Delete the temporary newArray
-	
-	delete[]newArray;
-	
-	//Set temporary array to be NULL.
-	
-	newArray = NULL;
-	
+                count++;
+        }
+
+        backingArraySize = 2 * backingArraySize;
+
+        delete[]backingArray;
+        backingArray = NULL;
+        backingArray = newArray;
+
 
 }
+

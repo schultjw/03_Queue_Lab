@@ -41,6 +41,7 @@ T ArrayQueue<T>::remove(){
 	throw (std::string) "No item to remove."
   }
   else{
+    front = (front + 1) % backingArraySize;
 	numItems--;
   } 
 }

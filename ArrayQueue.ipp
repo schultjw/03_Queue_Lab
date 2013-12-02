@@ -37,7 +37,12 @@ void ArrayQueue<T>::add(T toAdd){
 
 template <class T>
 T ArrayQueue<T>::remove(){
-  
+  if(numItems == 0){
+	throw (std::string) "No item to remove."
+  }
+  else{
+	numItems--;
+  } 
 }
 
 template <class T>

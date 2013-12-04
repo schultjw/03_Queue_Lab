@@ -35,7 +35,7 @@ Questions
 4. The grow method takes O(n) time because it is dependent on the number of items currently in the array (n items).
 5. No memory is leaked while the program is being run, as the destructor and grow method perform as they should.
 6. The getNumItems method takes O(1) time because all that it does is simply call the numItems variable.
-7. The add method throws and exception when ______________ and the remove method throws an exception when it is called and there are no items currently in the queue.
+7. The remove method throws an exception when it is called and there are no items currently in the queue.
 8. The array used to store all of the item data is used in a circular fashion.
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.

@@ -2,9 +2,6 @@
 // remove
 #include <string>
 
-int n;
-int numItems;
-
 //Syntax note: This uses the pre-processor to create a constant
 // You could also use "const static" to make a constant, as in Java.
 // Notice, however, that START_SIZE is NOT a variable! Instead, any
@@ -19,7 +16,6 @@ int numItems;
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
 	front = 0;
-	n=0;
 	numItems=0;
 	backingArraySize=START_SIZE;
 	backingArray = new T[START_SIZE];
@@ -34,9 +30,8 @@ template <class T>
 void ArrayQueue<T>::add(T toAdd){
 	if(getNumItems() == backingArraySize)
 		grow();
-	backingArray[n]=toAdd;
+	backingArray[(front + numItems)%backingArraySize]=toAdd;
 	numItems++;
-	n=(n+1)%backingArraySize;
 }
 
 template <class T>
@@ -44,10 +39,9 @@ T ArrayQueue<T>::remove(){
 	if(numItems == 0)
 		throw (std::string)"There are no elements to remove";
 	else{
-		T result = backingArray[front];
-		front=(front+1)%backingArraySize;
+		front++;
 		numItems--;
-		return result;
+		return backingArray[(front-1)%backingArraySize];
 	}
 }
 
@@ -62,7 +56,6 @@ void ArrayQueue<T>::grow(){
 	for(unsigned int i = 0; i<backingArraySize; i++){
 		newArray[i]=backingArray[(front+i)%backingArraySize];
 	}
-	n=backingArraySize;
 	front = 0;
 	delete[] backingArray;
 	backingArray = newArray;

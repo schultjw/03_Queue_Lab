@@ -16,29 +16,60 @@
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
 
+  backingArraySize = START_SIZE;
+  backingArray = new T[backingArraySize];
+  front = 0;
+  numItems = 0;
+
 }
 
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
+  
+  delete[] backingArray;
 
 }
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
+  
+  if (numItems == backingArraySize)
+    grow();
+  int addLocation = (front+numItems)%backingArraySize;
+  backingArray[addLocation] = toAdd;
+  numItems++;
 
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
   
+  if (numItems == 0)
+    throw (std::string) "Error: no items in array to delete.  Please add an item before attempting to delete anything.";
+  T itemToDelete = backingArray[front];
+  front = (front+1)%backingArraySize;
+  numItems--;
+  return itemToDelete;
+
 }
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
+  
+  return numItems;
 
 }
 
 template <class T>
 void ArrayQueue<T>::grow(){
+
+  int updatedSize = 2*backingArraySize;
+  T* updatedArray = new T[updatedSize];
+  for (int index = 0; index < backingArraySize; index++)
+    updatedArray[index] = backingArray[(front+index)%backingArraySize];
+  front = 0;
+  delete[] backingArray;
+  backingArraySize = updatedSize;
+  backingArray = updatedArray;
 
 }

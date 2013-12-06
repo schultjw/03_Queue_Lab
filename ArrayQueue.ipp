@@ -59,7 +59,7 @@ void ArrayQueue<T>::grow(){
 	T* delptr = backingArray;
 	backingArray = newArr;
 	for(int i = 0; i < backingArraySize; i++){
-		backingArray[i] = delptr[i];
+		backingArray[(front + i) % backingArraySize] = delptr[i];
 	}
 	backingArraySize = backingArraySize * 2;
 	delete[] delptr;

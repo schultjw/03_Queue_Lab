@@ -24,14 +24,14 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. TODO
-2. TODO
-3. TODO
-4. TODO
-5. TODO
-6. TODO
-7. TODO
-8. TODO
+1. remove() takes O(1) time.
+2. add() takes O(1) time, unless it calls grow, then it will be O(n). 
+3. NOT WORKING
+4. NOT WORKING
+5. All the memories have been allocated properly.
+6. getNumItems is O(1) time.
+7. add and remove throw exceptions as appropriate.
+8. I have a circular array implemented. 
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 
@@ -44,3 +44,4 @@ Questions
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?
 
 #### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?
+The purpose of having a class destructor in c++ is to deallocate dynamic memory. The reason I don't need them is Java has garbage collector, so it automatically 

@@ -28,12 +28,15 @@ ArrayQueue<T>::~ArrayQueue() {
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
-
+	backingArray[(front+numItems)%backingArraySize]=toAdd;
+	numItems++;
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
-  return backingArray[0];
+  T thing=backingArray[front];
+  front=front++%backingArraySize;
+  return thing;
 }
 
 template <class T>

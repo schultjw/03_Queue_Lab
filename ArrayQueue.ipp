@@ -39,10 +39,9 @@ T ArrayQueue<T>::remove(){
   if(numItems==0)
 	throw (std::string)"You can't remove from an empty queue";
   else{
-	  T thing=backingArray[front];
 	  front=front++%backingArraySize;
 	  numItems--;
-	  return thing;
+	  return backingArray[((front-1)+numItems)%backingArraySize];
   }
 }
 

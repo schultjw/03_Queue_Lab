@@ -56,9 +56,11 @@ unsigned long ArrayQueue<T>::getNumItems(){
 template <class T>
 void ArrayQueue<T>::grow(){
 	T* largerBackingArray = new T[backingArraySize*2];
-	for(int i=0; i<backingArraySize; i++)
+	// Peeked at griffid5's loop to understand how to fix; needs unsigned long for i instead of int (https://github.com/MiamiOH-CSE274/03_Queue_Lab/blob/griffid5/ArrayQueue.ipp)
+	for(unsigned long i=0; i<backingArraySize; i++)
 	{
-		largerBackingArray[i]=backingArray[i];
+		// taken from reading
+		largerBackingArray[i+front]=backingArray[(i+front)%backingArraySize];
 	}
 	backingArraySize=backingArraySize*2;
 	delete[] backingArray;

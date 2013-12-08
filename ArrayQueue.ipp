@@ -28,15 +28,22 @@ ArrayQueue<T>::~ArrayQueue() {
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
+	if(backingArraySize==numItems)
+		grow();
 	backingArray[(front+numItems)%backingArraySize]=toAdd;
 	numItems++;
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
-  T thing=backingArray[front];
-  front=front++%backingArraySize;
-  return thing;
+  if(numItems==0)
+	throw (std::string)"You can't remove from an empty queue";
+  else{
+	  T thing=backingArray[front];
+	  front=front++%backingArraySize;
+	  numItems--;
+	  return thing;
+  }
 }
 
 template <class T>
@@ -46,5 +53,13 @@ unsigned long ArrayQueue<T>::getNumItems(){
 
 template <class T>
 void ArrayQueue<T>::grow(){
-
+	T* largerBackingArray = new T[backingArraySize*2];
+	for(int i=0; i<backingArraySize; i++)
+	{
+		largerBackingArray[i]=backingArray[i];
+	}
+	backingArraySize=backingArraySize*2;
+	T* temp = backingArray;
+	backingArray=largerBackingArray;
+	delete temp;
 }

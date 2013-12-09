@@ -55,12 +55,5 @@ unsigned long ArrayQueue<T>::getNumItems(){
 
 template <class T>
 void ArrayQueue<T>::grow(){
-	T* newArr = new T[2*backingArraySize];
-	T* delptr = backingArray;
-	backingArray = newArr;
-	for(int i = 0; i < backingArraySize; i++){
-		backingArray[(front + i) % backingArraySize] = delptr[i];
-	}
-	backingArraySize = backingArraySize * 2;
-	delete[] delptr;
+	// No idea how to implement grow()
 }

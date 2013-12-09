@@ -16,7 +16,7 @@
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
 	backingArray = new T[START_SIZE];
-	front = backingArray[0];
+	front = 0;
 	numItems = 0;
 	backingArraySize = START_SIZE;
 }
@@ -60,8 +60,8 @@ void ArrayQueue<T>::grow(){
 	for (int i = 0; i < numItems; i++) {
 		newBackingArray[i] = backingArray[(front + i) % backingArraySize];
 	}
+	delete[] backingArray;
 	backingArray = newBackingArray;
 	front = 0;
 	backingArraySize = backingArraySize * 2;
-	delete[] backingArray;
 }

@@ -98,4 +98,8 @@ Running Time Analysis
 
 #### 3. remove - Like add, remove takes constant time. Because the remove method already knows where to remove our information from and we are never going to have to do any linear probing like add does when having to call grow, remove is always done in a constant amount of operations not dependant on the size of the array, making it constant time (O(1)).
 
-#### 4. getNumItems - since this is just returning a local int and the size of the array doesn't affect this value at all since nothing is being added or removed from the array in this method, the running time for this method is constant time (O(1)).
+#### 4. getNumItems - since this is just returning a local int which has already calculated the amount in other methods, and the size of the array doesn't affect this line's running time at all since nothing is being added or removed from the array in this method, the running time for this method is constant time (O(1)).
+
+#### 5. constructor - Because the constructor is just 4 instructions, none of which are dependent on the number of items in the LinkedList, the constructor will perform in constant time (O(1)).
+
+#### 6. destructor - Since the destructor just has to simply delete the array, assuming that delete takes constant time to do, this method will perform in constant time (O(1)) since it doesn't depend on the size of the array.

@@ -1,3 +1,6 @@
+//Methods derived from class lecture and textbook material
+
+
 //You will need this so you can make a string to throw in
 // remove
 #include <string>
@@ -16,7 +19,7 @@
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
 	backingArray = new T[START_SIZE];
-	front = backingArray[0];
+	front = 0;
 	numItems = 0;
 	backingArraySize = START_SIZE;
 }
@@ -24,9 +27,6 @@ ArrayQueue<T>::ArrayQueue(){
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
 	delete[] backingArray;
-	delete front;
-	delete numItems;
-	delete backingArraySize;
 }
 
 template <class T>
@@ -63,8 +63,8 @@ void ArrayQueue<T>::grow(){
 	for (int i = 0; i < numItems; i++) {
 		newBackingArray[i] = backingArray[(front + i) % backingArraySize];
 	}
+	delete[] backingArray;
 	backingArray = newBackingArray;
 	front = 0;
 	backingArraySize = backingArraySize * 2;
-	delete[] backingArray;
 }

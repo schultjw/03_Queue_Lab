@@ -15,30 +15,54 @@
 // ArrayQueue<T> class.
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
-
+	front = 0;
+	backingArray=new T[START_SIZE];
+	backingArraySize=START_SIZE;
+	numItems=0;
 }
 
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
-
+	delete[] backingArray;
 }
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
+	if(backingArraySize==numItems)
+		grow();
+	backingArray[(front+numItems)%backingArraySize]=toAdd;
+	numItems++;
 
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
-  
+  if(numItems==0)
+	throw (std::string)"You can't remove from an empty queue";
+  else{
+	  T thing = backingArray[front];
+	  front++;
+	  front = (front%backingArraySize);
+	  numItems--;
+	  return thing;
+  }
 }
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
-
+	return numItems;
 }
 
 template <class T>
 void ArrayQueue<T>::grow(){
-
+	T* largerBackingArray = new T[backingArraySize*2];
+	// Peeked at griffid5's loop to understand how to fix; needs unsigned long for i instead of int (https://github.com/MiamiOH-CSE274/03_Queue_Lab/blob/griffid5/ArrayQueue.ipp)
+	for(unsigned long i=0; i<backingArraySize; i++)
+	{
+		// taken from reading
+		largerBackingArray[i+front]=backingArray[(i+front)%backingArraySize];
+	}
+	backingArraySize=backingArraySize*2;
+	delete[] backingArray;
+	backingArray=largerBackingArray;
 }

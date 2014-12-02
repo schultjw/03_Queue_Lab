@@ -27,7 +27,7 @@ void testAddRemove(ArrayQueue<int>& testQueue){
   int y = testQueue.remove();
   int z = testQueue.remove();
   if(x != 5 || y != 10 || z != 4){
-    std::cout << "ERROR: Expected 5, 10, 4, but got " << x <<", " << y << ", " << "z" << std::endl;
+    std::cout << "ERROR: Expected 5, 10, 4, but got " << x <<", " << y << ", " << z << std::endl;
   } else {
     std::cout << "SUCCESS: 3 added items came back out in the correct order" << std::endl;
   }
@@ -57,7 +57,7 @@ void testGrow(ArrayQueue<int>& testQueue){
     std::cout << "ERROR: Should have 1000 items in queue, but only found " << testQueue.getNumItems() << std::endl;
     return;
   }
-
+  
   for(int i=0;i<1000;i++){
     int t = testQueue.remove();
     if(t != i){
@@ -71,14 +71,14 @@ void testGrow(ArrayQueue<int>& testQueue){
 //Test to make sure you are throwing an exception if remove is
 // called improperly
 void testRemoveException(ArrayQueue<int>& testQueue){
-  try {
-    int t = testQueue.remove();
+  try { 
+		int t = testQueue.remove();
   } catch (std::string s) {
-    std::cout << "SUCCESS: Caught exception: " << s << std::endl;
-    return;
+		std::cout << "SUCCESS: Caught exception: " << s << std::endl;
+		return;
   } catch (...) {
-    std::cout << "ERROR: Caught an exception, but it wasn't a string type" << std::endl;
-    return;
+		std::cout << "ERROR: Caught an exception, but it wasn't a string type" << std::endl;
+		return;
   }
 
   std::cout << "ERROR: Tried to remove from an empty queue, but did not get an exception" << std::endl;
@@ -87,6 +87,8 @@ void testRemoveException(ArrayQueue<int>& testQueue){
 //A simple main function which creates a queue, and tests it.
 int main(){
   ArrayQueue<int> testQueue;
+
+  //Tests for methods. Comment out tests that aren't ready to be run yet.
   testCtor(testQueue);
   testAddRemove(testQueue);
   testAroundTheHorn(testQueue);

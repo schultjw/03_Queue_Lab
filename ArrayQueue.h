@@ -88,43 +88,26 @@ ArrayQueue<T>::~ArrayQueue() {
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
-	numItems++;
 
-	if(numItems>backingArraySize){
+	if(numItems >= backingArraySize){
 		grow();
 	}
 
-	T* myNewArray = new T[numItems];
-	myNewArray[(front+numItems)%backingArraySize] = toAdd;
-	for(unsigned int i = 0; i<numItems;i++){
-		myNewArray[i] = backingArray[i];
-	}
-	delete[] backingArray;
-	backingArray = myNewArray;
+	backingArray[(front + numItems) % backingArraySize] = toAdd;
+
+	numItems++;
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
-	if(numItems < 1){
+	if(numItems == 0){
 		throw std::string("Queue is already empty, attempted to remove.");
 	}
+
+	T retVal = backingArray[front];
+	front = (front + 1) % backingArraySize;
 	numItems--;
-	std::cout << "in remove(), backingArray[0] is: " << backingArray[0] << std::endl;
-	//Make a new array, store old item
-	T* myNewArray = new T[numItems];
 
-	T retVal = backingArray[0];
-	std::cout << "in ArrayQueue<T>::remove(), retval is: " << retVal << std::endl;
-	//Copy old items
-	for(unsigned int i=0;i<numItems;i++){
-		myNewArray[i]=backingArray[i+1];
-	}
-
-	//repoint backingArray
-	delete[] backingArray;
-	backingArray = myNewArray;
-
-	//return removed item
 	return retVal;
 }
 
@@ -135,14 +118,17 @@ unsigned long ArrayQueue<T>::getNumItems(){
 
 template <class T>
 void ArrayQueue<T>::grow(){
-	backingArraySize = backingArraySize * 2;
-	T* myNewArray = new T[backingArraySize];
-	for(unsigned int i=0;i<numItems;i++){
-		myNewArray[i] = backingArray[i];
+	unsigned int newSize = backingArraySize * 2;
+
+	T* tempArray = new T[newSize];
+	
+	for(unsigned int i = 0; i < backingArraySize; i++){
+		tempArray[i] = backingArray[(front + i) % backingArraySize];
 	}
+
 	delete[] backingArray;
-	backingArray = myNewArray;
+	backingArray = tempArray;
+	backingArraySize = newSize;
+	front = 0;
 }
-//update code so add(T toAdd) and remove() dont change array size by themselves if there's no room
-//instead use grow() to double size of array so that there IS room
-//((front+numArray)%backingArraySize) <- use that as the pointer, it will loop around to front of allocated memory if we hit the back
+

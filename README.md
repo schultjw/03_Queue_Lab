@@ -28,14 +28,14 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. TODO
-2. TODO
-3. TODO
-4. TODO
-5. TODO
-6. TODO
-7. TODO
-8. TODO
+1. Works. The remove() method verifies the array is not empty, then increments front and returns what was at the old front of the array.
+2. Works. If grow() is not called, the new item is placed at the end (or rather, the first empty spot. The 'end' of the currently used information).
+3. Works. The add() method checks if numItems is >= backingArraySize, and grows if that is true.
+4. Works. Because the grow() method needs to copy the information into a new array, it is O(n) running time.
+5. Works. delete[] is called when necessary.
+6. Works. returns numItems, so very clearly is O(1) running time.
+7. Works. If there are 0 items in the array, remove() will throw a string saying so.
+8. Works. That's what the front variable is for, along with the modulus operator. 
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
 

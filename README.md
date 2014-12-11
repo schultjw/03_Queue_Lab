@@ -38,13 +38,24 @@ Questions
 8. Works. That's what the front variable is for, along with the modulus operator. 
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
+	If we used a Stack instead of a Queue, we would still need the grow() method, as well as a backingArray, backingArraySize, and numItems.
+		We would NOT need the front variable, because a Queue is a first in first out structure, while a stack is a last in first out structure.
+		We used front so that we could "remove" the first item in the Queue without needing a new array, but with a Stack, removing is done from the end, so numItems will serve that purpose.
 
 #### 3. What is one question that confused you about this excercise, or one piece of advice you would share with students next semester?
+	Remember that the grow() method is the ONLY place where the array should change sizes. If you add the grow() method after implementing the add(T) method,
+		then the add(T) method needs to change it's implementation to reflect that.
 
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
+	We write "class ArrayQueue : public Queue <T>".
 
 #### 5. What is the purpose of "templates" in C++?
+	Templates let a class be written while using generic types. Without a template, the class would need to be rewritten for each type (int, double, string, etc),
+		while a template lets the class use all of those.
 
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?
+	int* array = new int[10];
 
 #### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?
+	The destructor lets the class release (deallocate) any memory that was reserved for that instance of the class. This prevents a whole mess of problems
+		that will be caused by leaving that memory allocated and inaccessible.
